@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "TodayExpectedDelivery";
+    Layout = "~/Views/Admins/_LayoutAdmin.cshtml";
+}
+
+<h2>TodayExpectedDelivery</h2>
+
+<div>
+    <table id="orderTable" class="table table-bordered table-hover">
+
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Product Type</th>
+                <th>Product Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>hii</td>
+                <td>hii</td>
+                <td>hii</td>
+                <td>hii</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#orderTable').DataTable()
+        });
+    </script>
+}
+
+
+
+
+
