@@ -19,7 +19,7 @@ namespace DataLayer
 
         public IEnumerable<Product> GetProducts()
         {
-            return _context.Products.Include(p=>p.ProductCategory).ToList();
+            return _context.Products.Include(p=>p.ProductCategory).Include(p=>p.ProductSize).OrderBy(P=>P.ProductName).ToList();
         }
     }
 }

@@ -115,6 +115,7 @@
           <Property Name="ProductAdminNotification" Type="int" Nullable="false" />
           <Property Name="ProductSizeId" Type="int" Nullable="false" />
           <Property Name="ProductImage" Type="nvarchar(max)" />
+          <Property Name="ProductPrice" Type="int" />
         </EntityType>
         <EntityType Name="ProductSize">
           <Key>
@@ -242,30 +243,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Products_ProductCategory">
-          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
-          <End Role="Products" Type="Self.Products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductCategory">
-              <PropertyRef Name="ProductCategoryId" />
-            </Principal>
-            <Dependent Role="Products">
-              <PropertyRef Name="ProductCategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_ProductSize">
-          <End Role="ProductSize" Type="Self.ProductSize" Multiplicity="1" />
-          <End Role="Products" Type="Self.Products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductSize">
-              <PropertyRef Name="ProductSizeId" />
-            </Principal>
-            <Dependent Role="Products">
-              <PropertyRef Name="ProductSizeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DotNetTeamModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -313,14 +290,6 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_ProductCategory" Association="Self.FK_Products_ProductCategory">
-            <End Role="ProductCategory" EntitySet="ProductCategory" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_ProductSize" Association="Self.FK_Products_ProductSize">
-            <End Role="ProductSize" EntitySet="ProductSize" />
-            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -419,6 +388,7 @@
           <NavigationProperty Name="ProductSize" Relationship="Self.FK_Products_ProductSize" FromRole="Products" ToRole="ProductSize" />
           <NavigationProperty Name="OrderConfirmeds" Relationship="DotNetTeamModel.FK__OrderConf__Produ__7D439ABD" FromRole="Product" ToRole="OrderConfirmed" />
           <NavigationProperty Name="Orders" Relationship="DotNetTeamModel.FK__Orders__ProductI__787EE5A0" FromRole="Product" ToRole="Order" />
+          <Property Name="ProductPrice" Type="Int32" />
         </EntityType>
         <EntityType Name="ProductSize">
           <Key>
@@ -705,6 +675,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="DotNetTeamModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
