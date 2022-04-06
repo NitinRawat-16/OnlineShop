@@ -18,6 +18,13 @@
         <AssociationConnector Association="DotNetTeamModel.FK_Products_ProductCategory" ManuallyRouted="false" />
         <AssociationConnector Association="DotNetTeamModel.FK_Products_ProductSize" ManuallyRouted="false" />
         <AssociationConnector Association="DotNetTeamModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DotNetTeamModel.OrderConfirmed" Width="1.5" PointX="8.25" PointY="4.375" />
+        <EntityTypeShape EntityType="DotNetTeamModel.Order" Width="1.5" PointX="11" PointY="4.875" />
+        <AssociationConnector Association="DotNetTeamModel.FK__OrderConf__Custo__7E37BEF6" />
+        <AssociationConnector Association="DotNetTeamModel.FK__Orders__UserId__797309D9" />
+        <AssociationConnector Association="DotNetTeamModel.FK__OrderConf__Produ__7D439ABD" />
+        <AssociationConnector Association="DotNetTeamModel.FK__Orders__OrderDet__7A672E12" />
+        <AssociationConnector Association="DotNetTeamModel.FK__Orders__ProductI__787EE5A0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,6 +14,11 @@ namespace DataModelLayer
     
     public partial class OrderDetail
     {
+        public OrderDetail()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int OrderDetailsId { get; set; }
         public string CustomerName { get; set; }
         public string DeliveryAddress { get; set; }
@@ -23,5 +28,7 @@ namespace DataModelLayer
         public string PaymentMode { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public Nullable<System.DateTime> ExcpectedDelivery { get; set; }
+    
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

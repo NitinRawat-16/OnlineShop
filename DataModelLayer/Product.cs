@@ -14,6 +14,12 @@ namespace DataModelLayer
     
     public partial class Product
     {
+        public Product()
+        {
+            this.OrderConfirmeds = new HashSet<OrderConfirmed>();
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
@@ -27,5 +33,7 @@ namespace DataModelLayer
     
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ProductSize ProductSize { get; set; }
+        public virtual ICollection<OrderConfirmed> OrderConfirmeds { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

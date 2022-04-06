@@ -63,6 +63,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderConfirmed.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="OrderDetail.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>

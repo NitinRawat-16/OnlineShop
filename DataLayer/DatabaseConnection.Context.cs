@@ -33,5 +33,7 @@ namespace DataModelLayer
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductSize> ProductSizes { get; set; }
+        public virtual DbSet<OrderConfirmed> OrderConfirmeds { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }
