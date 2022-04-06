@@ -20,10 +20,10 @@ namespace DataModelLayer
         }
     
         public int ProductSizeId { get; set; }
-        public Nullable<int> S { get; set; }
-        public Nullable<int> M { get; set; }
-        public Nullable<int> L { get; set; }
-        public Nullable<int> Xl { get; set; }
+        public int S { get; set; }
+        public int M { get; set; }
+        public int L { get; set; }
+        public int Xl { get; set; }
     
         public virtual ICollection<Product> Products { get; set; }
     }

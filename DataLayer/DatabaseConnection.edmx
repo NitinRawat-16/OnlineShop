@@ -122,10 +122,10 @@
             <PropertyRef Name="ProductSizeId" />
           </Key>
           <Property Name="ProductSizeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="S" Type="int" />
-          <Property Name="M" Type="int" />
-          <Property Name="L" Type="int" />
-          <Property Name="Xl" Type="int" />
+          <Property Name="S" Type="int" Nullable="false" />
+          <Property Name="M" Type="int" Nullable="false" />
+          <Property Name="L" Type="int" Nullable="false" />
+          <Property Name="Xl" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__OrderConf__Custo__7E37BEF6">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
@@ -395,10 +395,10 @@
             <PropertyRef Name="ProductSizeId" />
           </Key>
           <Property Name="ProductSizeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="S" Type="Int32" />
-          <Property Name="M" Type="Int32" />
-          <Property Name="L" Type="Int32" />
-          <Property Name="Xl" Type="Int32" />
+          <Property Name="S" Type="Int32" Nullable="false" />
+          <Property Name="M" Type="Int32" Nullable="false" />
+          <Property Name="L" Type="Int32" Nullable="false" />
+          <Property Name="Xl" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductSize" FromRole="ProductSize" ToRole="Products" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
