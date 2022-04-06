@@ -25,6 +25,21 @@ namespace UserInterface
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/Adminlib").Include(
+                      "~/Scripts/jquery-{version}.js",
+                       "~/Scripts/DataTables/jquery.dataTables.js",
+                      "~/Scripts/DataTables/dataTables.bootstrap.js",
+                       "~/Scripts/bootstrap.js"
+                      ));
+
+            bundles.Add(new StyleBundle("~/Content/Admincss").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/Site.css",
+                      "~/Content/DataTables/css/dataTables.bootstrap.css"
+                       
+                      ));
         }
     }
 }
