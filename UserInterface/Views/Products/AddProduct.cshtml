@@ -1,0 +1,64 @@
+﻿@model UserInterface.ViewModel.ProductViewModel
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddProduct</h2>
+
+@using (Html.BeginForm("Save", "Products"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.product.ProductName)
+        @Html.TextBoxFor(m => m.product.ProductName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.product.ProductName)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.product.ProductDescription)
+        @Html.TextBoxFor(m => m.product.ProductDescription, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.product.ProductCategoryId)
+        @Html.DropDownListFor(m => m.product.ProductCategoryId, new SelectList(Model.productCategories, "ProductCategoryId", "ProductCategoryType"), "Select Product Type", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.productSize.S)
+        @Html.TextBoxFor(m => m.productSize.S, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.productSize.M)
+        @Html.TextBoxFor(m => m.productSize.M, new { @class = "form-control" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.productSize.L)
+        @Html.TextBoxFor(m => m.productSize.L, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.productSize.Xl)
+        @Html.TextBoxFor(m => m.productSize.Xl, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.product.ProductAdminNotification)
+        @Html.TextBoxFor(m => m.product.ProductAdminNotification, new { @class = "form-control" })
+
+    </div>
+
+    @Html.HiddenFor(m => m.product.ProductId);
+    @Html.AntiForgeryToken()
+    <div>
+        <input type="submit" class=" btn btn-primary" />
+    </div>
+
+}
+
+
+

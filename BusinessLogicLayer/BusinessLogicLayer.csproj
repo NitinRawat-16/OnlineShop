@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminBll.cs" />
-    <Compile Include="DataLayerConnection.cs" />
+    <Compile Include="ProductBs.cs" />
+    <Compile Include="ProductCategoryBs.cs" />
+    <Compile Include="ProductSizeBs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
