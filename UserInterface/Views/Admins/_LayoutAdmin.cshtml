@@ -9,12 +9,15 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" >
-        <div class="logo-div">
-            <a href="@Url.Action("Home", "Admins")">
-                <img src="~/Images/LOGOFINAL.png" alt="Site Logo" class="logo-image" />
-            </a>
+    <div class="navbar navbar-inverse navbar-fixed-top">
 
+        <div class="logo-div">
+            <div>
+                <a href="@Url.Action("Home", "Admins")">
+                    @*<img src="~/Images/LOGOFINAL.png" alt="Site Logo" class="logo-image" />*@
+                </a>
+            </div>
+            
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -36,7 +39,7 @@
             </div>
         </div>
     </div>
-   
+
     <div class="container body-content">
         @RenderBody()
         <hr />
