@@ -11,10 +11,10 @@ namespace DataLayer
 {
     public class AdminDll
     {
-        PortalEntities _context;
+        OnlineShop _context;
         public AdminDll()
         {
-            _context = new PortalEntities();
+            _context = new OnlineShop();
         }
 
         public IEnumerable<Product> GetProducts()

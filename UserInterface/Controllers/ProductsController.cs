@@ -22,7 +22,7 @@ namespace UserInterface.Controllers
         {
             var categoryViewModel = new ProductViewModel
             {
-                ProductCategories = productCategory.GetAll().ToList()
+                productCategories = productCategory.GetAll().ToList()
             };
             return View(categoryViewModel);
         }
@@ -33,19 +33,19 @@ namespace UserInterface.Controllers
             var ViewModel = new ProductViewModel
             {
                 product = productViewModel.product,
-                ProductSize = productViewModel.ProductSize,
-                ProductCategories = productViewModel.ProductCategories
+                productSize = productViewModel.productSize,
+                productCategories = productViewModel.productCategories
             };
-            productSize.Insert(ViewModel.ProductSize);
-            productViewModel.product.ProductSizeId = ViewModel.ProductSize.ProductSizeId;
-            productViewModel.product.TotalProductAdded = ViewModel.ProductSize.L
-                + ViewModel.ProductSize.S
-                + ViewModel.ProductSize.M
-                + ViewModel.ProductSize.Xl;
-            productViewModel.product.ProductAvailability = ViewModel.ProductSize.L
-                + ViewModel.ProductSize.S
-                + ViewModel.ProductSize.M
-                + ViewModel.ProductSize.Xl;
+            productSize.Insert(ViewModel.productSize);
+            productViewModel.product.ProductSizeId = ViewModel.productSize.ProductSizeId;
+            productViewModel.product.TotalProductAdded = ViewModel.productSize.L
+                + ViewModel.productSize.S
+                + ViewModel.productSize.M
+                + ViewModel.productSize.Xl;
+            productViewModel.product.ProductAvailability = ViewModel.productSize.L
+                + ViewModel.productSize.S
+                + ViewModel.productSize.M
+                + ViewModel.productSize.Xl;
             productViewModel.product.ProductAddedDate = DateTime.Now.Date;
             product.Insert(ViewModel.product);
 

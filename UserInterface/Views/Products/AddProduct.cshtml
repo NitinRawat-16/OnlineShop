@@ -22,7 +22,7 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.product.ProductCategoryId)
-        @Html.DropDownListFor(m => m.product.ProductCategoryId, new SelectList(Model.productCategory, "ProductCategoryId", "ProductCategoryType"), "Select Product Type", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.product.ProductCategoryId, new SelectList(Model.productCategories, "ProductCategoryId", "ProductCategoryType"), "Select Product Type", new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.productSize.S)
