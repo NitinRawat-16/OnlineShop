@@ -32,9 +32,9 @@ namespace DataModelLayer
         public string ProductImage { get; set; }
         public int ProductPrice { get; set; }
     
-        public virtual ProductCategory ProductCategory { get; set; }
-        public virtual ProductSize ProductSize { get; set; }
         public virtual ICollection<OrderConfirmed> OrderConfirmeds { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
+        public virtual ProductSize ProductSize { get; set; }
     }
 }

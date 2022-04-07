@@ -41,9 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductBs.cs" />
-    <Compile Include="ProductCategoryBs.cs" />
-    <Compile Include="ProductSizeBs.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DataLayerConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
