@@ -42,9 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminBll.cs" />
-    <Compile Include="ProductBs.cs" />
-    <Compile Include="ProductCategoryBs.cs" />
-    <Compile Include="ProductSizeBs.cs" />
+    <Compile Include="Products\ProductBs.cs" />
+    <Compile Include="Products\ProductCategoryBs.cs" />
+    <Compile Include="Products\ProductSizeBs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

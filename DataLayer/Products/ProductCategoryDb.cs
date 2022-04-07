@@ -9,7 +9,7 @@ namespace DataLayer
 {
     public  class ProductCategoryDb
     {
-        OnlineShop db= new OnlineShop();
+        PortalEntities db= new PortalEntities();
         public IEnumerable<ProductCategory> GetAll()
         {
             return db.ProductCategories;
