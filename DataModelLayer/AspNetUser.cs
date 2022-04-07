@@ -18,12 +18,12 @@ namespace DataModelLayer
         {
             this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
-            this.AspNetRoles = new HashSet<AspNetRole>();
             this.OrderConfirmeds = new HashSet<OrderConfirmed>();
             this.Orders = new HashSet<Order>();
+            this.AspNetRoles = new HashSet<AspNetRole>();
         }
     
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }
@@ -38,8 +38,8 @@ namespace DataModelLayer
     
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
         public virtual ICollection<OrderConfirmed> OrderConfirmeds { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
     }
 }

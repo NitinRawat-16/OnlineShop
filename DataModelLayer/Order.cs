@@ -14,10 +14,10 @@ namespace DataModelLayer
     
     public partial class Order
     {
-        public int Id { get; set; }
-        public Nullable<int> ProductId { get; set; }
-        public string UserId { get; set; }
-        public Nullable<int> OrderDetailId { get; set; }
+        public int OrderId { get; set; }
+        public int ProductId { get; set; }
+        public int UserId { get; set; }
+        public int OrderDetailsId { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual OrderDetail OrderDetail { get; set; }

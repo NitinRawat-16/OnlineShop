@@ -30,11 +30,11 @@ namespace DataModelLayer
         public int ProductAdminNotification { get; set; }
         public int ProductSizeId { get; set; }
         public string ProductImage { get; set; }
-        public Nullable<int> ProductPrice { get; set; }
+        public int ProductPrice { get; set; }
     
-        public virtual ProductCategory ProductCategory { get; set; }
-        public virtual ProductSize ProductSize { get; set; }
         public virtual ICollection<OrderConfirmed> OrderConfirmeds { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
+        public virtual ProductSize ProductSize { get; set; }
     }
 }
