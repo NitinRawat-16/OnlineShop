@@ -1,0 +1,17 @@
+﻿body {
+}
+
+.containerbox {
+    border: solid 2px red;
+    width: 600px;
+    margin: auto;
+  
+}
+
+.box {
+    display: flex;
+    width:600px;
+}
+c-box{
+    display:flex;
+}
