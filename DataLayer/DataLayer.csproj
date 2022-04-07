@@ -60,6 +60,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseConnection.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ProductCategoryDb.cs" />
+    <Compile Include="ProductDb.cs" />
+    <Compile Include="ProductSizeDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

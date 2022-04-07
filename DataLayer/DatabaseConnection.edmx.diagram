@@ -25,6 +25,7 @@
         <AssociationConnector Association="DotNetTeamModel.FK__OrderConf__Produ__7D439ABD" />
         <AssociationConnector Association="DotNetTeamModel.FK__Orders__OrderDet__7A672E12" />
         <AssociationConnector Association="DotNetTeamModel.FK__Orders__ProductI__787EE5A0" />
+        <AssociationConnector Association="DotNetTeamModel.FK__Orders__OrderDet__7A672E121" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

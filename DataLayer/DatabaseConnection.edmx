@@ -17,7 +17,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="ClaimType" Type="nvarchar(max)" />
           <Property Name="ClaimValue" Type="nvarchar(max)" />
         </EntityType>
@@ -29,21 +29,21 @@
           </Key>
           <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUserRoles">
           <Key>
             <PropertyRef Name="UserId" />
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="256" />
           <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar(max)" />
@@ -58,18 +58,18 @@
         </EntityType>
         <EntityType Name="OrderConfirmed">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="OrderConfirmedId" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderConfirmedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductId" Type="int" />
-          <Property Name="CustomerId" Type="nvarchar" MaxLength="128" />
-          <Property Name="OrderName" Type="varchar" MaxLength="50" />
-          <Property Name="Address" Type="varchar" MaxLength="100" />
-          <Property Name="Mobile" Type="varchar" MaxLength="11" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerMobile" Type="varchar" MaxLength="11" />
           <Property Name="PaymentMode" Type="varchar" MaxLength="20" />
-          <Property Name="Status" Type="varchar" MaxLength="20" />
-          <Property Name="DeliveryUpto" Type="date" />
-          <Property Name="DeliveredDate" Type="date" />
+          <Property Name="OrderStatus" Type="varchar" MaxLength="20" />
+          <Property Name="OrderDeliveryUpto" Type="date" />
+          <Property Name="OrderDeliveredDate" Type="date" />
         </EntityType>
         <EntityType Name="OrderDetails">
           <Key>
@@ -80,19 +80,19 @@
           <Property Name="DeliveryAddress" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CustomerMobile" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="OrderDate" Type="date" Nullable="false" />
-          <Property Name="ConfirmedDate" Type="date" />
+          <Property Name="OrderConfirmedDate" Type="date" />
           <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DeliveryDate" Type="date" />
-          <Property Name="ExcpectedDelivery" Type="date" />
+          <Property Name="OrderDeliveryDate" Type="date" />
+          <Property Name="OrderExcpectedDelivery" Type="date" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="OrderId" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductId" Type="int" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
-          <Property Name="OrderDetailId" Type="int" />
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="OrderDetailsId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -115,17 +115,17 @@
           <Property Name="ProductAdminNotification" Type="int" Nullable="false" />
           <Property Name="ProductSizeId" Type="int" Nullable="false" />
           <Property Name="ProductImage" Type="nvarchar(max)" />
-          <Property Name="ProductPrice" Type="int" />
+          <Property Name="ProductPrice" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductSize">
           <Key>
             <PropertyRef Name="ProductSizeId" />
           </Key>
           <Property Name="ProductSizeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="S" Type="int" />
-          <Property Name="M" Type="int" />
-          <Property Name="L" Type="int" />
-          <Property Name="Xl" Type="int" />
+          <Property Name="S" Type="int" Nullable="false" />
+          <Property Name="M" Type="int" Nullable="false" />
+          <Property Name="L" Type="int" Nullable="false" />
+          <Property Name="Xl" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__OrderConf__Custo__7E37BEF6">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
@@ -152,19 +152,19 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Orders__OrderDet__7A672E12">
-          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="0..1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderDetails">
               <PropertyRef Name="OrderDetailsId" />
             </Principal>
             <Dependent Role="Orders">
-              <PropertyRef Name="OrderDetailId" />
+              <PropertyRef Name="OrderDetailsId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Orders__ProductI__787EE5A0">
-          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Products">
@@ -176,7 +176,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Orders__UserId__797309D9">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -309,7 +309,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
@@ -322,14 +322,14 @@
           </Key>
           <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" />
           <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -361,6 +361,10 @@
           <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
           <Property Name="ExcpectedDelivery" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Orders" Relationship="DotNetTeamModel.FK__Orders__OrderDet__7A672E12" FromRole="OrderDetail" ToRole="Order" />
+          <Property Name="OrderConfirmedDate" Type="DateTime" Precision="0" />
+          <Property Name="OrderDeliveryDate" Type="DateTime" Precision="0" />
+          <Property Name="OrderExcpectedDelivery" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Orders1" Relationship="DotNetTeamModel.FK__Orders__OrderDet__7A672E121" FromRole="OrderDetail" ToRole="Order" />
         </EntityType>
         <EntityType Name="ProductCategory">
           <Key>
@@ -388,17 +392,17 @@
           <NavigationProperty Name="ProductSize" Relationship="Self.FK_Products_ProductSize" FromRole="Products" ToRole="ProductSize" />
           <NavigationProperty Name="OrderConfirmeds" Relationship="DotNetTeamModel.FK__OrderConf__Produ__7D439ABD" FromRole="Product" ToRole="OrderConfirmed" />
           <NavigationProperty Name="Orders" Relationship="DotNetTeamModel.FK__Orders__ProductI__787EE5A0" FromRole="Product" ToRole="Order" />
-          <Property Name="ProductPrice" Type="Int32" />
+          <Property Name="ProductPrice" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductSize">
           <Key>
             <PropertyRef Name="ProductSizeId" />
           </Key>
           <Property Name="ProductSizeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="S" Type="Int32" />
-          <Property Name="M" Type="Int32" />
-          <Property Name="L" Type="Int32" />
-          <Property Name="Xl" Type="Int32" />
+          <Property Name="S" Type="Int32" Nullable="false" />
+          <Property Name="M" Type="Int32" Nullable="false" />
+          <Property Name="L" Type="Int32" Nullable="false" />
+          <Property Name="Xl" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductSize" FromRole="ProductSize" ToRole="Products" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -508,14 +512,19 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK__Orders__OrderDet__7A672E121" Association="DotNetTeamModel.FK__Orders__OrderDet__7A672E121">
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="OrderConfirmed">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="OrderConfirmedId" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductId" Type="Int32" />
-          <Property Name="CustomerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerId" Type="String" />
           <Property Name="OrderName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Mobile" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
@@ -525,18 +534,29 @@
           <Property Name="DeliveredDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="AspNetUser" Relationship="DotNetTeamModel.FK__OrderConf__Custo__7E37BEF6" FromRole="OrderConfirmed" ToRole="AspNetUser" />
           <NavigationProperty Name="Product" Relationship="DotNetTeamModel.FK__OrderConf__Produ__7D439ABD" FromRole="OrderConfirmed" ToRole="Product" />
+          <Property Name="OrderConfirmedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="OrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDeliveryUpto" Type="DateTime" Precision="0" />
+          <Property Name="OrderDeliveredDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="OrderId" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" />
           <Property Name="OrderDetailId" Type="Int32" />
           <NavigationProperty Name="AspNetUser" Relationship="DotNetTeamModel.FK__Orders__UserId__797309D9" FromRole="Order" ToRole="AspNetUser" />
           <NavigationProperty Name="OrderDetail" Relationship="DotNetTeamModel.FK__Orders__OrderDet__7A672E12" FromRole="Order" ToRole="OrderDetail" />
           <NavigationProperty Name="Product" Relationship="DotNetTeamModel.FK__Orders__ProductI__787EE5A0" FromRole="Order" ToRole="Product" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderDetailsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderDetail1" Relationship="DotNetTeamModel.FK__Orders__OrderDet__7A672E121" FromRole="Order" ToRole="OrderDetail" />
         </EntityType>
         <Association Name="FK__OrderConf__Custo__7E37BEF6">
           <End Type="DotNetTeamModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
@@ -598,6 +618,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Orders__OrderDet__7A672E121">
+          <End Type="DotNetTeamModel.OrderDetail" Role="OrderDetail" Multiplicity="1" />
+          <End Type="DotNetTeamModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetail">
+              <PropertyRef Name="OrderDetailsId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -652,16 +684,16 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="DotNetTeamModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderExcpectedDelivery" ColumnName="OrderExcpectedDelivery" />
+                <ScalarProperty Name="OrderDeliveryDate" ColumnName="OrderDeliveryDate" />
+                <ScalarProperty Name="OrderConfirmedDate" ColumnName="OrderConfirmedDate" />
                 <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
                 <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
                 <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
                 <ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="ConfirmedDate" ColumnName="ConfirmedDate" />
                 <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
-                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
-                <ScalarProperty Name="ExcpectedDelivery" ColumnName="ExcpectedDelivery" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductCategories">
@@ -711,26 +743,26 @@
           <EntitySetMapping Name="OrderConfirmeds">
             <EntityTypeMapping TypeName="DotNetTeamModel.OrderConfirmed">
               <MappingFragment StoreEntitySet="OrderConfirmed">
-                <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
-                <ScalarProperty Name="DeliveryUpto" ColumnName="DeliveryUpto" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="OrderDeliveredDate" ColumnName="OrderDeliveredDate" />
+                <ScalarProperty Name="OrderDeliveryUpto" ColumnName="OrderDeliveryUpto" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="OrderConfirmedId" ColumnName="OrderConfirmedId" />
                 <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="OrderName" ColumnName="OrderName" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="DotNetTeamModel.Order">
               <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+                <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
