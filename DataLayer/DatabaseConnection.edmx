@@ -1,793 +1,795 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
-	<!-- EF Runtime content -->
-	<edmx:Runtime>
-		<!-- SSDL content -->
-		<edmx:StorageModels>
-			<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-				<EntityType Name="AspNetRoles">
-					<Key>
-						<PropertyRef Name="Id" />
-					</Key>
-					<Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-					<Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
-				</EntityType>
-				<EntityType Name="AspNetUserClaims">
-					<Key>
-						<PropertyRef Name="Id" />
-					</Key>
-					<Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-					<Property Name="UserId" Type="int" Nullable="false" />
-					<Property Name="ClaimType" Type="nvarchar(max)" />
-					<Property Name="ClaimValue" Type="nvarchar(max)" />
-				</EntityType>
-				<EntityType Name="AspNetUserLogins">
-					<Key>
-						<PropertyRef Name="LoginProvider" />
-						<PropertyRef Name="ProviderKey" />
-						<PropertyRef Name="UserId" />
-					</Key>
-					<Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
-					<Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-					<Property Name="UserId" Type="int" Nullable="false" />
-				</EntityType>
-				<EntityType Name="AspNetUserRoles">
-					<Key>
-						<PropertyRef Name="UserId" />
-						<PropertyRef Name="RoleId" />
-					</Key>
-					<Property Name="UserId" Type="int" Nullable="false" />
-					<Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
-				</EntityType>
-				<EntityType Name="AspNetUsers">
-					<Key>
-						<PropertyRef Name="Id" />
-					</Key>
-					<Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-					<Property Name="Email" Type="nvarchar" MaxLength="256" />
-					<Property Name="EmailConfirmed" Type="bit" Nullable="false" />
-					<Property Name="PasswordHash" Type="nvarchar(max)" />
-					<Property Name="SecurityStamp" Type="nvarchar(max)" />
-					<Property Name="PhoneNumber" Type="nvarchar(max)" />
-					<Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
-					<Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
-					<Property Name="LockoutEndDateUtc" Type="datetime" />
-					<Property Name="LockoutEnabled" Type="bit" Nullable="false" />
-					<Property Name="AccessFailedCount" Type="int" Nullable="false" />
-					<Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-				</EntityType>
-				<EntityType Name="OrderConfirmed">
-					<Key>
-						<PropertyRef Name="OrderConfirmedId" />
-					</Key>
-					<Property Name="OrderConfirmedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-					<Property Name="ProductId" Type="int" />
-					<Property Name="CustomerId" Type="int" />
-					<Property Name="CustomerName" Type="varchar" MaxLength="50" />
-					<Property Name="CustomerAddress" Type="varchar" MaxLength="100" />
-					<Property Name="CustomerMobile" Type="varchar" MaxLength="11" />
-					<Property Name="PaymentMode" Type="varchar" MaxLength="20" />
-					<Property Name="OrderStatus" Type="varchar" MaxLength="20" />
-					<Property Name="OrderDeliveryUpto" Type="date" />
-					<Property Name="OrderDeliveredDate" Type="date" />
-				</EntityType>
-				<EntityType Name="OrderDetails">
-					<Key>
-						<PropertyRef Name="OrderDetailsId" />
-					</Key>
-					<Property Name="OrderDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-					<Property Name="CustomerName" Type="nvarchar(max)" Nullable="false" />
-					<Property Name="DeliveryAddress" Type="nvarchar(max)" Nullable="false" />
-					<Property Name="CustomerMobile" Type="varchar" MaxLength="50" Nullable="false" />
-					<Property Name="OrderDate" Type="date" Nullable="false" />
-					<Property Name="OrderConfirmedDate" Type="date" />
-					<Property Name="PaymentMode" Type="nvarchar" MaxLength="50" Nullable="false" />
-					<Property Name="OrderDeliveryDate" Type="date" />
-					<Property Name="OrderExcpectedDelivery" Type="date" />
-				</EntityType>
-				<EntityType Name="Orders">
-					<Key>
-						<PropertyRef Name="OrderId" />
-					</Key>
-					<Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-					<Property Name="ProductId" Type="int" Nullable="false" />
-					<Property Name="UserId" Type="int" Nullable="false" />
-					<Property Name="OrderDetailsId" Type="int" Nullable="false" />
-				</EntityType>
-				<EntityType Name="ProductCategory">
-					<Key>
-						<PropertyRef Name="ProductCategoryId" />
-					</Key>
-					<Property Name="ProductCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-					<Property Name="ProductCategoryType" Type="nvarchar" MaxLength="255" Nullable="false" />
-				</EntityType>
-				<EntityType Name="Products">
-					<Key>
-						<PropertyRef Name="ProductId" />
-					</Key>
-					<Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-					<Property Name="ProductName" Type="nvarchar" MaxLength="255" Nullable="false" />
-					<Property Name="ProductDescription" Type="nvarchar(max)" Nullable="false" />
-					<Property Name="ProductAddedDate" Type="date" Nullable="false" />
-					<Property Name="ProductCategoryId" Type="int" Nullable="false" />
-					<Property Name="ProductAvailability" Type="int" Nullable="false" />
-					<Property Name="TotalProductAdded" Type="int" Nullable="false" />
-					<Property Name="ProductAdminNotification" Type="int" Nullable="false" />
-					<Property Name="ProductSizeId" Type="int" Nullable="false" />
-					<Property Name="ProductImage" Type="nvarchar(max)" />
-					<Property Name="ProductPrice" Type="int" Nullable="false" />
-				</EntityType>
-				<EntityType Name="ProductSize">
-					<Key>
-						<PropertyRef Name="ProductSizeId" />
-					</Key>
-					<Property Name="ProductSizeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-					<Property Name="S" Type="int" Nullable="false" />
-					<Property Name="M" Type="int" Nullable="false" />
-					<Property Name="L" Type="int" Nullable="false" />
-					<Property Name="Xl" Type="int" Nullable="false" />
-				</EntityType>
-				<Association Name="FK__OrderConf__Custo__7E37BEF6">
-					<End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-					<End Role="OrderConfirmed" Type="Self.OrderConfirmed" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetUsers">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="OrderConfirmed">
-							<PropertyRef Name="CustomerId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__OrderConf__Produ__7D439ABD">
-					<End Role="Products" Type="Self.Products" Multiplicity="0..1" />
-					<End Role="OrderConfirmed" Type="Self.OrderConfirmed" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Products">
-							<PropertyRef Name="ProductId" />
-						</Principal>
-						<Dependent Role="OrderConfirmed">
-							<PropertyRef Name="ProductId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Orders__OrderDet__7A672E12">
-					<End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="1" />
-					<End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="OrderDetails">
-							<PropertyRef Name="OrderDetailsId" />
-						</Principal>
-						<Dependent Role="Orders">
-							<PropertyRef Name="OrderDetailsId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Orders__ProductI__787EE5A0">
-					<End Role="Products" Type="Self.Products" Multiplicity="1" />
-					<End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Products">
-							<PropertyRef Name="ProductId" />
-						</Principal>
-						<Dependent Role="Orders">
-							<PropertyRef Name="ProductId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Orders__UserId__797309D9">
-					<End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
-					<End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetUsers">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="Orders">
-							<PropertyRef Name="UserId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-					<End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetUsers">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="AspNetUserClaims">
-							<PropertyRef Name="UserId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-					<End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetUsers">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="AspNetUserLogins">
-							<PropertyRef Name="UserId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-					<End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetRoles">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="AspNetUserRoles">
-							<PropertyRef Name="RoleId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-					<End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetUsers">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="AspNetUserRoles">
-							<PropertyRef Name="UserId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK_Products_ProductCategory">
-					<End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
-					<End Role="Products" Type="Self.Products" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="ProductCategory">
-							<PropertyRef Name="ProductCategoryId" />
-						</Principal>
-						<Dependent Role="Products">
-							<PropertyRef Name="ProductCategoryId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK_Products_ProductSize">
-					<End Role="ProductSize" Type="Self.ProductSize" Multiplicity="1" />
-					<End Role="Products" Type="Self.Products" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="ProductSize">
-							<PropertyRef Name="ProductSizeId" />
-						</Principal>
-						<Dependent Role="Products">
-							<PropertyRef Name="ProductSizeId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<EntityContainer Name="ModelStoreContainer">
-					<EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="OrderConfirmed" EntityType="Self.OrderConfirmed" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-					<EntitySet Name="ProductSize" EntityType="Self.ProductSize" Schema="dbo" store:Type="Tables" />
-					<AssociationSet Name="FK__OrderConf__Custo__7E37BEF6" Association="Self.FK__OrderConf__Custo__7E37BEF6">
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-						<End Role="OrderConfirmed" EntitySet="OrderConfirmed" />
-					</AssociationSet>
-					<AssociationSet Name="FK__OrderConf__Produ__7D439ABD" Association="Self.FK__OrderConf__Produ__7D439ABD">
-						<End Role="Products" EntitySet="Products" />
-						<End Role="OrderConfirmed" EntitySet="OrderConfirmed" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Orders__OrderDet__7A672E12" Association="Self.FK__Orders__OrderDet__7A672E12">
-						<End Role="OrderDetails" EntitySet="OrderDetails" />
-						<End Role="Orders" EntitySet="Orders" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Orders__ProductI__787EE5A0" Association="Self.FK__Orders__ProductI__787EE5A0">
-						<End Role="Products" EntitySet="Products" />
-						<End Role="Orders" EntitySet="Orders" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Orders__UserId__797309D9" Association="Self.FK__Orders__UserId__797309D9">
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-						<End Role="Orders" EntitySet="Orders" />
-					</AssociationSet>
-					<AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-						<End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-					</AssociationSet>
-					<AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-						<End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-					</AssociationSet>
-					<AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-						<End Role="AspNetRoles" EntitySet="AspNetRoles" />
-						<End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-					</AssociationSet>
-					<AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-						<End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-					</AssociationSet>
-					<AssociationSet Name="FK_Products_ProductCategory" Association="Self.FK_Products_ProductCategory">
-						<End Role="ProductCategory" EntitySet="ProductCategory" />
-						<End Role="Products" EntitySet="Products" />
-					</AssociationSet>
-					<AssociationSet Name="FK_Products_ProductSize" Association="Self.FK_Products_ProductSize">
-						<End Role="ProductSize" EntitySet="ProductSize" />
-						<End Role="Products" EntitySet="Products" />
-					</AssociationSet>
-				</EntityContainer>
-			</Schema>
-		</edmx:StorageModels>
-		<!-- CSDL content -->
-		<edmx:ConceptualModels>
-			<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-				<EntityType Name="AspNetRole">
-					<Key>
-						<PropertyRef Name="Id" />
-					</Key>
-					<Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-					<Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-					<NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
-				</EntityType>
-				<EntityType Name="AspNetUserClaim">
-					<Key>
-						<PropertyRef Name="Id" />
-					</Key>
-					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="UserId" Type="Int32" Nullable="false" />
-					<Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-					<Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-					<NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
-				</EntityType>
-				<EntityType Name="AspNetUserLogin">
-					<Key>
-						<PropertyRef Name="LoginProvider" />
-						<PropertyRef Name="ProviderKey" />
-						<PropertyRef Name="UserId" />
-					</Key>
-					<Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-					<Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-					<Property Name="UserId" Type="Int32" Nullable="false" />
-					<NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
-				</EntityType>
-				<EntityType Name="AspNetUser">
-					<Key>
-						<PropertyRef Name="Id" />
-					</Key>
-					<Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-					<Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-					<Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-					<Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-					<Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-					<Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
-					<Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-					<Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
-					<Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
-					<Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-					<Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-					<NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-					<NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-					<NavigationProperty Name="OrderConfirmeds" Relationship="Self.FK__OrderConf__Custo__7E37BEF6" FromRole="AspNetUsers" ToRole="OrderConfirmed" />
-					<NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserId__797309D9" FromRole="AspNetUsers" ToRole="Orders" />
-					<NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
-				</EntityType>
-				<EntityType Name="OrderConfirmed">
-					<Key>
-						<PropertyRef Name="OrderConfirmedId" />
-					</Key>
-					<Property Name="OrderConfirmedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="ProductId" Type="Int32" />
-					<Property Name="CustomerId" Type="Int32" />
-					<Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-					<Property Name="CustomerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-					<Property Name="CustomerMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
-					<Property Name="PaymentMode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-					<Property Name="OrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-					<Property Name="OrderDeliveryUpto" Type="DateTime" Precision="0" />
-					<Property Name="OrderDeliveredDate" Type="DateTime" Precision="0" />
-					<NavigationProperty Name="AspNetUser" Relationship="Self.FK__OrderConf__Custo__7E37BEF6" FromRole="OrderConfirmed" ToRole="AspNetUsers" />
-					<NavigationProperty Name="Product" Relationship="Self.FK__OrderConf__Produ__7D439ABD" FromRole="OrderConfirmed" ToRole="Products" />
-				</EntityType>
-				<EntityType Name="OrderDetail">
-					<Key>
-						<PropertyRef Name="OrderDetailsId" />
-					</Key>
-					<Property Name="OrderDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-					<Property Name="DeliveryAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-					<Property Name="CustomerMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-					<Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
-					<Property Name="OrderConfirmedDate" Type="DateTime" Precision="0" />
-					<Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-					<Property Name="OrderDeliveryDate" Type="DateTime" Precision="0" />
-					<Property Name="OrderExcpectedDelivery" Type="DateTime" Precision="0" />
-					<NavigationProperty Name="Orders" Relationship="Self.FK__Orders__OrderDet__7A672E12" FromRole="OrderDetails" ToRole="Orders" />
-				</EntityType>
-				<EntityType Name="Order">
-					<Key>
-						<PropertyRef Name="OrderId" />
-					</Key>
-					<Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="ProductId" Type="Int32" Nullable="false" />
-					<Property Name="UserId" Type="Int32" Nullable="false" />
-					<Property Name="OrderDetailsId" Type="Int32" Nullable="false" />
-					<NavigationProperty Name="AspNetUser" Relationship="Self.FK__Orders__UserId__797309D9" FromRole="Orders" ToRole="AspNetUsers" />
-					<NavigationProperty Name="OrderDetail" Relationship="Self.FK__Orders__OrderDet__7A672E12" FromRole="Orders" ToRole="OrderDetails" />
-					<NavigationProperty Name="Product" Relationship="Self.FK__Orders__ProductI__787EE5A0" FromRole="Orders" ToRole="Products" />
-				</EntityType>
-				<EntityType Name="ProductCategory">
-					<Key>
-						<PropertyRef Name="ProductCategoryId" />
-					</Key>
-					<Property Name="ProductCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="ProductCategoryType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-					<NavigationProperty Name="Products" Relationship="Model.FK_Products_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
-				</EntityType>
-				<EntityType Name="Product">
-					<Key>
-						<PropertyRef Name="ProductId" />
-					</Key>
-					<Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-					<Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-					<Property Name="ProductAddedDate" Type="DateTime" Nullable="false" Precision="0" />
-					<Property Name="ProductCategoryId" Type="Int32" Nullable="false" />
-					<Property Name="ProductAvailability" Type="Int32" Nullable="false" />
-					<Property Name="TotalProductAdded" Type="Int32" Nullable="false" />
-					<Property Name="ProductAdminNotification" Type="Int32" Nullable="false" />
-					<Property Name="ProductSizeId" Type="Int32" Nullable="false" />
-					<Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-					<Property Name="ProductPrice" Type="Int32" Nullable="false" />
-					<NavigationProperty Name="OrderConfirmeds" Relationship="Self.FK__OrderConf__Produ__7D439ABD" FromRole="Products" ToRole="OrderConfirmed" />
-					<NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ProductI__787EE5A0" FromRole="Products" ToRole="Orders" />
-					<NavigationProperty Name="ProductCategory" Relationship="Model.FK_Products_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
-					<NavigationProperty Name="ProductSize" Relationship="Model.FK_Products_ProductSize" FromRole="Product" ToRole="ProductSize" />
-				</EntityType>
-				<EntityType Name="ProductSize">
-					<Key>
-						<PropertyRef Name="ProductSizeId" />
-					</Key>
-					<Property Name="ProductSizeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-					<Property Name="S" Type="Int32" Nullable="false" />
-					<Property Name="M" Type="Int32" Nullable="false" />
-					<Property Name="L" Type="Int32" Nullable="false" />
-					<Property Name="Xl" Type="Int32" Nullable="false" />
-					<NavigationProperty Name="Products" Relationship="Model.FK_Products_ProductSize" FromRole="ProductSize" ToRole="Product" />
-				</EntityType>
-				<Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-					<End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetUsers">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="AspNetUserClaims">
-							<PropertyRef Name="UserId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-					<End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
-						<OnDelete Action="Cascade" />
-					</End>
-					<End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetUsers">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="AspNetUserLogins">
-							<PropertyRef Name="UserId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__OrderConf__Custo__7E37BEF6">
-					<End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
-					<End Role="OrderConfirmed" Type="Self.OrderConfirmed" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetUsers">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="OrderConfirmed">
-							<PropertyRef Name="CustomerId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Orders__UserId__797309D9">
-					<End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-					<End Role="Orders" Type="Self.Order" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="AspNetUsers">
-							<PropertyRef Name="Id" />
-						</Principal>
-						<Dependent Role="Orders">
-							<PropertyRef Name="UserId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__OrderConf__Produ__7D439ABD">
-					<End Role="Products" Type="Self.Product" Multiplicity="0..1" />
-					<End Role="OrderConfirmed" Type="Self.OrderConfirmed" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Products">
-							<PropertyRef Name="ProductId" />
-						</Principal>
-						<Dependent Role="OrderConfirmed">
-							<PropertyRef Name="ProductId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Orders__OrderDet__7A672E12">
-					<End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="1" />
-					<End Role="Orders" Type="Self.Order" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="OrderDetails">
-							<PropertyRef Name="OrderDetailsId" />
-						</Principal>
-						<Dependent Role="Orders">
-							<PropertyRef Name="OrderDetailsId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK__Orders__ProductI__787EE5A0">
-					<End Role="Products" Type="Self.Product" Multiplicity="1" />
-					<End Role="Orders" Type="Self.Order" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="Products">
-							<PropertyRef Name="ProductId" />
-						</Principal>
-						<Dependent Role="Orders">
-							<PropertyRef Name="ProductId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="AspNetUserRoles">
-					<End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
-					<End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
-				</Association>
-				<EntityContainer Name="PortalEntities" annotation:LazyLoadingEnabled="true">
-					<EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
-					<EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
-					<EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
-					<EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-					<EntitySet Name="OrderConfirmeds" EntityType="Self.OrderConfirmed" />
-					<EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
-					<EntitySet Name="Orders" EntityType="Self.Order" />
-					<EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
-					<EntitySet Name="Products" EntityType="Self.Product" />
-					<EntitySet Name="ProductSizes" EntityType="Self.ProductSize" />
-					<AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-						<End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-					</AssociationSet>
-					<AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-						<End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-					</AssociationSet>
-					<AssociationSet Name="FK__OrderConf__Custo__7E37BEF6" Association="Self.FK__OrderConf__Custo__7E37BEF6">
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-						<End Role="OrderConfirmed" EntitySet="OrderConfirmeds" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Orders__UserId__797309D9" Association="Self.FK__Orders__UserId__797309D9">
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-						<End Role="Orders" EntitySet="Orders" />
-					</AssociationSet>
-					<AssociationSet Name="FK__OrderConf__Produ__7D439ABD" Association="Self.FK__OrderConf__Produ__7D439ABD">
-						<End Role="Products" EntitySet="Products" />
-						<End Role="OrderConfirmed" EntitySet="OrderConfirmeds" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Orders__OrderDet__7A672E12" Association="Self.FK__Orders__OrderDet__7A672E12">
-						<End Role="OrderDetails" EntitySet="OrderDetails" />
-						<End Role="Orders" EntitySet="Orders" />
-					</AssociationSet>
-					<AssociationSet Name="FK__Orders__ProductI__787EE5A0" Association="Self.FK__Orders__ProductI__787EE5A0">
-						<End Role="Products" EntitySet="Products" />
-						<End Role="Orders" EntitySet="Orders" />
-					</AssociationSet>
-					<AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-						<End Role="AspNetRoles" EntitySet="AspNetRoles" />
-						<End Role="AspNetUsers" EntitySet="AspNetUsers" />
-					</AssociationSet>
-					<AssociationSet Name="FK_Products_ProductCategory" Association="Model.FK_Products_ProductCategory">
-						<End Role="ProductCategory" EntitySet="ProductCategories" />
-						<End Role="Product" EntitySet="Products" />
-					</AssociationSet>
-					<AssociationSet Name="FK_Products_ProductSize" Association="Model.FK_Products_ProductSize">
-						<End Role="ProductSize" EntitySet="ProductSizes" />
-						<End Role="Product" EntitySet="Products" />
-					</AssociationSet>
-				</EntityContainer>
-				<Association Name="FK_Products_ProductCategory">
-					<End Type="Model.ProductCategory" Role="ProductCategory" Multiplicity="1" />
-					<End Type="Model.Product" Role="Product" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="ProductCategory">
-							<PropertyRef Name="ProductCategoryId" />
-						</Principal>
-						<Dependent Role="Product">
-							<PropertyRef Name="ProductCategoryId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-				<Association Name="FK_Products_ProductSize">
-					<End Type="Model.ProductSize" Role="ProductSize" Multiplicity="1" />
-					<End Type="Model.Product" Role="Product" Multiplicity="*" />
-					<ReferentialConstraint>
-						<Principal Role="ProductSize">
-							<PropertyRef Name="ProductSizeId" />
-						</Principal>
-						<Dependent Role="Product">
-							<PropertyRef Name="ProductSizeId" />
-						</Dependent>
-					</ReferentialConstraint>
-				</Association>
-			</Schema>
-		</edmx:ConceptualModels>
-		<!-- C-S mapping content -->
-		<edmx:Mappings>
-			<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-				<EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="PortalEntities">
-					<EntitySetMapping Name="AspNetRoles">
-						<EntityTypeMapping TypeName="Model.AspNetRole">
-							<MappingFragment StoreEntitySet="AspNetRoles">
-								<ScalarProperty Name="Id" ColumnName="Id" />
-								<ScalarProperty Name="Name" ColumnName="Name" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="AspNetUserClaims">
-						<EntityTypeMapping TypeName="Model.AspNetUserClaim">
-							<MappingFragment StoreEntitySet="AspNetUserClaims">
-								<ScalarProperty Name="Id" ColumnName="Id" />
-								<ScalarProperty Name="UserId" ColumnName="UserId" />
-								<ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-								<ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="AspNetUserLogins">
-						<EntityTypeMapping TypeName="Model.AspNetUserLogin">
-							<MappingFragment StoreEntitySet="AspNetUserLogins">
-								<ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-								<ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-								<ScalarProperty Name="UserId" ColumnName="UserId" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="AspNetUsers">
-						<EntityTypeMapping TypeName="Model.AspNetUser">
-							<MappingFragment StoreEntitySet="AspNetUsers">
-								<ScalarProperty Name="Id" ColumnName="Id" />
-								<ScalarProperty Name="Email" ColumnName="Email" />
-								<ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-								<ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-								<ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-								<ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-								<ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-								<ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-								<ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-								<ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-								<ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-								<ScalarProperty Name="UserName" ColumnName="UserName" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="OrderConfirmeds">
-						<EntityTypeMapping TypeName="Model.OrderConfirmed">
-							<MappingFragment StoreEntitySet="OrderConfirmed">
-								<ScalarProperty Name="OrderConfirmedId" ColumnName="OrderConfirmedId" />
-								<ScalarProperty Name="ProductId" ColumnName="ProductId" />
-								<ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-								<ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-								<ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
-								<ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
-								<ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
-								<ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-								<ScalarProperty Name="OrderDeliveryUpto" ColumnName="OrderDeliveryUpto" />
-								<ScalarProperty Name="OrderDeliveredDate" ColumnName="OrderDeliveredDate" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="OrderDetails">
-						<EntityTypeMapping TypeName="Model.OrderDetail">
-							<MappingFragment StoreEntitySet="OrderDetails">
-								<ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
-								<ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-								<ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
-								<ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
-								<ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-								<ScalarProperty Name="OrderConfirmedDate" ColumnName="OrderConfirmedDate" />
-								<ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
-								<ScalarProperty Name="OrderDeliveryDate" ColumnName="OrderDeliveryDate" />
-								<ScalarProperty Name="OrderExcpectedDelivery" ColumnName="OrderExcpectedDelivery" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="Orders">
-						<EntityTypeMapping TypeName="Model.Order">
-							<MappingFragment StoreEntitySet="Orders">
-								<ScalarProperty Name="OrderId" ColumnName="OrderId" />
-								<ScalarProperty Name="ProductId" ColumnName="ProductId" />
-								<ScalarProperty Name="UserId" ColumnName="UserId" />
-								<ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="ProductCategories">
-						<EntityTypeMapping TypeName="Model.ProductCategory">
-							<MappingFragment StoreEntitySet="ProductCategory">
-								<ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
-								<ScalarProperty Name="ProductCategoryType" ColumnName="ProductCategoryType" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="Products">
-						<EntityTypeMapping TypeName="Model.Product">
-							<MappingFragment StoreEntitySet="Products">
-								<ScalarProperty Name="ProductId" ColumnName="ProductId" />
-								<ScalarProperty Name="ProductName" ColumnName="ProductName" />
-								<ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-								<ScalarProperty Name="ProductAddedDate" ColumnName="ProductAddedDate" />
-								<ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
-								<ScalarProperty Name="ProductAvailability" ColumnName="ProductAvailability" />
-								<ScalarProperty Name="TotalProductAdded" ColumnName="TotalProductAdded" />
-								<ScalarProperty Name="ProductAdminNotification" ColumnName="ProductAdminNotification" />
-								<ScalarProperty Name="ProductSizeId" ColumnName="ProductSizeId" />
-								<ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
-								<ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<EntitySetMapping Name="ProductSizes">
-						<EntityTypeMapping TypeName="Model.ProductSize">
-							<MappingFragment StoreEntitySet="ProductSize">
-								<ScalarProperty Name="ProductSizeId" ColumnName="ProductSizeId" />
-								<ScalarProperty Name="S" ColumnName="S" />
-								<ScalarProperty Name="M" ColumnName="M" />
-								<ScalarProperty Name="L" ColumnName="L" />
-								<ScalarProperty Name="Xl" ColumnName="Xl" />
-							</MappingFragment>
-						</EntityTypeMapping>
-					</EntitySetMapping>
-					<AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-						<EndProperty Name="AspNetRoles">
-							<ScalarProperty Name="Id" ColumnName="RoleId" />
-						</EndProperty>
-						<EndProperty Name="AspNetUsers">
-							<ScalarProperty Name="Id" ColumnName="UserId" />
-						</EndProperty>
-					</AssociationSetMapping>
-				</EntityContainerMapping>
-			</Mapping>
-		</edmx:Mappings>
-	</edmx:Runtime>
-	<!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-	<Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-		<Connection>
-			<DesignerInfoPropertySet>
-				<DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-			</DesignerInfoPropertySet>
-		</Connection>
-		<Options>
-			<DesignerInfoPropertySet>
-				<DesignerProperty Name="ValidateOnBuild" Value="true" />
-				<DesignerProperty Name="EnablePluralization" Value="true" />
-				<DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-				<DesignerProperty Name="UseLegacyProvider" Value="false" />
-				<DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-			</DesignerInfoPropertySet>
-		</Options>
-		<!-- Diagram content (shape and connector positions) -->
-		<Diagrams></Diagrams>
-	</Designer>
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderConfirmed">
+          <Key>
+            <PropertyRef Name="OrderConfirmedId" />
+          </Key>
+          <Property Name="OrderConfirmedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="CustomerId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerAddress" Type="varchar" MaxLength="100" />
+          <Property Name="CustomerMobile" Type="varchar" MaxLength="11" />
+          <Property Name="PaymentMode" Type="varchar" MaxLength="20" />
+          <Property Name="OrderStatus" Type="varchar" MaxLength="20" />
+          <Property Name="OrderDeliveryUpto" Type="date" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="Size" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailsId" />
+          </Key>
+          <Property Name="OrderDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DeliveryAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CustomerMobile" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderDate" Type="date" Nullable="false" />
+          <Property Name="OrderConfirmedDate" Type="date" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderDeliveryDate" Type="date" />
+          <Property Name="OrderExcpectedDelivery" Type="date" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="OrderDetailsId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCategoryId" />
+          </Key>
+          <Property Name="ProductCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCategoryType" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ProductDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProductAddedDate" Type="date" Nullable="false" />
+          <Property Name="ProductCategoryId" Type="int" Nullable="false" />
+          <Property Name="ProductAvailability" Type="int" Nullable="false" />
+          <Property Name="TotalProductAdded" Type="int" Nullable="false" />
+          <Property Name="ProductAdminNotification" Type="int" Nullable="false" />
+          <Property Name="ProductSizeId" Type="int" Nullable="false" />
+          <Property Name="ProductImage" Type="nvarchar(max)" />
+          <Property Name="ProductPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductSize">
+          <Key>
+            <PropertyRef Name="ProductSizeId" />
+          </Key>
+          <Property Name="ProductSizeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="S" Type="int" Nullable="false" />
+          <Property Name="M" Type="int" Nullable="false" />
+          <Property Name="L" Type="int" Nullable="false" />
+          <Property Name="Xl" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__OrderConf__Produ__7D439ABD">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="OrderConfirmed" Type="Self.OrderConfirmed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderConfirmed">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__OrderDet__7A672E12">
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetails">
+              <PropertyRef Name="OrderDetailsId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="OrderDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__ProductI__787EE5A0">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderConfirmed_OrderConfirmed1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="OrderConfirmed" Type="Self.OrderConfirmed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderConfirmed">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ProductCategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductSize">
+          <End Role="ProductSize" Type="Self.ProductSize" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductSize">
+              <PropertyRef Name="ProductSizeId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ProductSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderConfirmed" EntityType="Self.OrderConfirmed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductSize" EntityType="Self.ProductSize" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__OrderConf__Produ__7D439ABD" Association="Self.FK__OrderConf__Produ__7D439ABD">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderConfirmed" EntitySet="OrderConfirmed" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__OrderDet__7A672E12" Association="Self.FK__Orders__OrderDet__7A672E12">
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__ProductI__787EE5A0" Association="Self.FK__Orders__ProductI__787EE5A0">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderConfirmed_OrderConfirmed1" Association="Self.FK_OrderConfirmed_OrderConfirmed1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="OrderConfirmed" EntitySet="OrderConfirmed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_AspNetUsers" Association="Self.FK_Orders_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductCategory" Association="Self.FK_Products_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductSize" Association="Self.FK_Products_ProductSize">
+            <End Role="ProductSize" EntitySet="ProductSize" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="OrderConfirmeds" Relationship="Self.FK_OrderConfirmed_OrderConfirmed1" FromRole="AspNetUsers" ToRole="OrderConfirmed" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_AspNetUsers" FromRole="AspNetUsers" ToRole="Orders" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="OrderConfirmed">
+          <Key>
+            <PropertyRef Name="OrderConfirmedId" />
+          </Key>
+          <Property Name="OrderConfirmedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="CustomerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDeliveryUpto" Type="DateTime" Precision="0" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_OrderConfirmed_OrderConfirmed1" FromRole="OrderConfirmed" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderConf__Produ__7D439ABD" FromRole="OrderConfirmed" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailsId" />
+          </Key>
+          <Property Name="OrderDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeliveryAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OrderConfirmedDate" Type="DateTime" Precision="0" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderDeliveryDate" Type="DateTime" Precision="0" />
+          <Property Name="OrderExcpectedDelivery" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__OrderDet__7A672E12" FromRole="OrderDetails" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderDetailsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Orders_AspNetUsers" FromRole="Orders" ToRole="AspNetUsers" />
+          <NavigationProperty Name="OrderDetail" Relationship="Self.FK__Orders__OrderDet__7A672E12" FromRole="Orders" ToRole="OrderDetails" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Orders__ProductI__787EE5A0" FromRole="Orders" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCategoryId" />
+          </Key>
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCategoryType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductCategory" FromRole="ProductCategory" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductAddedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ProductAvailability" Type="Int32" Nullable="false" />
+          <Property Name="TotalProductAdded" Type="Int32" Nullable="false" />
+          <Property Name="ProductAdminNotification" Type="Int32" Nullable="false" />
+          <Property Name="ProductSizeId" Type="Int32" Nullable="false" />
+          <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductPrice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderConfirmeds" Relationship="Self.FK__OrderConf__Produ__7D439ABD" FromRole="Products" ToRole="OrderConfirmed" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ProductI__787EE5A0" FromRole="Products" ToRole="Orders" />
+          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_ProductCategory" FromRole="Products" ToRole="ProductCategory" />
+          <NavigationProperty Name="ProductSize" Relationship="Self.FK_Products_ProductSize" FromRole="Products" ToRole="ProductSize" />
+        </EntityType>
+        <EntityType Name="ProductSize">
+          <Key>
+            <PropertyRef Name="ProductSizeId" />
+          </Key>
+          <Property Name="ProductSizeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="S" Type="Int32" Nullable="false" />
+          <Property Name="M" Type="Int32" Nullable="false" />
+          <Property Name="L" Type="Int32" Nullable="false" />
+          <Property Name="Xl" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductSize" FromRole="ProductSize" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderConfirmed_OrderConfirmed1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="OrderConfirmed" Type="Self.OrderConfirmed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderConfirmed">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderConf__Produ__7D439ABD">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderConfirmed" Type="Self.OrderConfirmed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderConfirmed">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__OrderDet__7A672E12">
+          <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderDetails">
+              <PropertyRef Name="OrderDetailsId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="OrderDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__ProductI__787EE5A0">
+          <End Role="Products" Type="Self.Product" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductCategory">
+          <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ProductCategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ProductCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_ProductSize">
+          <End Role="ProductSize" Type="Self.ProductSize" Multiplicity="1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductSize">
+              <PropertyRef Name="ProductSizeId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ProductSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="PortalEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="OrderConfirmeds" EntityType="Self.OrderConfirmed" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductSizes" EntityType="Self.ProductSize" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderConfirmed_OrderConfirmed1" Association="Self.FK_OrderConfirmed_OrderConfirmed1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="OrderConfirmed" EntitySet="OrderConfirmeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_AspNetUsers" Association="Self.FK_Orders_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderConf__Produ__7D439ABD" Association="Self.FK__OrderConf__Produ__7D439ABD">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderConfirmed" EntitySet="OrderConfirmeds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__OrderDet__7A672E12" Association="Self.FK__Orders__OrderDet__7A672E12">
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__ProductI__787EE5A0" Association="Self.FK__Orders__ProductI__787EE5A0">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductCategory" Association="Self.FK_Products_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_ProductSize" Association="Self.FK_Products_ProductSize">
+            <End Role="ProductSize" EntitySet="ProductSizes" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="PortalEntities1">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Model.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Model.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderConfirmeds">
+            <EntityTypeMapping TypeName="Model.OrderConfirmed">
+              <MappingFragment StoreEntitySet="OrderConfirmed">
+                <ScalarProperty Name="OrderConfirmedId" ColumnName="OrderConfirmedId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderDeliveryUpto" ColumnName="OrderDeliveryUpto" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="Model.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+                <ScalarProperty Name="CustomerMobile" ColumnName="CustomerMobile" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderConfirmedDate" ColumnName="OrderConfirmedDate" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="OrderDeliveryDate" ColumnName="OrderDeliveryDate" />
+                <ScalarProperty Name="OrderExcpectedDelivery" ColumnName="OrderExcpectedDelivery" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Model.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="Model.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="ProductCategoryType" ColumnName="ProductCategoryType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="Model.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductAddedDate" ColumnName="ProductAddedDate" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="ProductAvailability" ColumnName="ProductAvailability" />
+                <ScalarProperty Name="TotalProductAdded" ColumnName="TotalProductAdded" />
+                <ScalarProperty Name="ProductAdminNotification" ColumnName="ProductAdminNotification" />
+                <ScalarProperty Name="ProductSizeId" ColumnName="ProductSizeId" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductSizes">
+            <EntityTypeMapping TypeName="Model.ProductSize">
+              <MappingFragment StoreEntitySet="ProductSize">
+                <ScalarProperty Name="ProductSizeId" ColumnName="ProductSizeId" />
+                <ScalarProperty Name="S" ColumnName="S" />
+                <ScalarProperty Name="M" ColumnName="M" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="Xl" ColumnName="Xl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
 </edmx:Edmx>

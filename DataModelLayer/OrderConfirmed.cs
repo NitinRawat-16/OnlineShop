@@ -16,14 +16,15 @@ namespace DataModelLayer
     {
         public int OrderConfirmedId { get; set; }
         public Nullable<int> ProductId { get; set; }
-        public Nullable<int> CustomerId { get; set; }
+        public string CustomerId { get; set; }
         public string CustomerName { get; set; }
         public string CustomerAddress { get; set; }
         public string CustomerMobile { get; set; }
         public string PaymentMode { get; set; }
         public string OrderStatus { get; set; }
         public Nullable<System.DateTime> OrderDeliveryUpto { get; set; }
-        public Nullable<System.DateTime> OrderDeliveredDate { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public string Size { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual Product Product { get; set; }
