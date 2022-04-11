@@ -1,18 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DataModelLayer;
 
 namespace DataLayer
 {
-    public  class ProductCategoryDb
+    public class ProductCategoryDb
     {
-        PortalEntities db= new PortalEntities();
+        readonly PortalEntities _db;
+        public ProductCategoryDb()
+        {
+            _db = new PortalEntities();
+        }
+
         public IEnumerable<ProductCategory> GetAll()
         {
-            return db.ProductCategories;
+            return _db.ProductCategories;
         }
     }
 }
