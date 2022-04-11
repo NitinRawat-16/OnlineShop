@@ -1,17 +1,27 @@
-﻿using System;
+﻿using System.Web.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using DataModelLayer;
+using BusinessLogicLayer.Users;
 
 namespace UserInterface.Controllers
 {
     public class UserController : Controller
     {
+        private readonly ViewProducts _viewProducts;
+        public UserController()
+        {
+            _viewProducts = new ViewProducts();
+        }
         // GET: User
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult ShowProducts()
+        {
+           var products = _viewProducts.ShowAllProducts();
+            return View(products);
         }
     }
 }

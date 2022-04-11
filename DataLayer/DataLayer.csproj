@@ -61,10 +61,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseConnection.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ProductCategoryDb.cs" />
-    <Compile Include="ProductDb.cs" />
-    <Compile Include="ProductSizeDb.cs" />
+    <Compile Include="Products\ProductCategoryDb.cs" />
+    <Compile Include="Products\ProductDb.cs" />
+    <Compile Include="Products\ProductSizeDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\ShowProducts.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataModelLayer\DataModelLayer.csproj">

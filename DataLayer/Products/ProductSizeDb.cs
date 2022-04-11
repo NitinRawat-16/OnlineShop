@@ -9,16 +9,21 @@ namespace DataLayer
 {
     public  class ProductSizeDb
     {
-        OnlineShop db= new OnlineShop();
+        readonly PortalEntities _db;
+        public ProductSizeDb()
+        {
+            _db = new PortalEntities();
+        }
+
         public IEnumerable<ProductSize> GetAll()
         {
-            return db.ProductSizes;
+            return _db.ProductSizes;
         }
 
         public void Insert(ProductSize productSize)
         {
-            db.ProductSizes.Add(productSize);
-            db.SaveChanges();
+            _db.ProductSizes.Add(productSize);
+            _db.SaveChanges();
         }
     }
 }
