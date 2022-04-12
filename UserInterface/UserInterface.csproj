@@ -391,9 +391,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Admin\Home.cshtml" />
-    <Content Include="Views\Admin\ProductList.cshtml" />
-    <Content Include="Views\Admin\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admins\Home.cshtml" />
+    <Content Include="Views\Admins\ProductList.cshtml" />
+    <Content Include="Views\Admins\_LayoutAdmin.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
