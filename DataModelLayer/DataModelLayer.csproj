@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlertProductDetails_Result.cs">
+      <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="AspNetRole.cs">
       <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
     </Compile>
@@ -58,7 +61,19 @@
     <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Cart.cs">
+      <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryOrderData_Result.cs">
+      <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Order.cs">
+      <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderCanceled.cs">
+      <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderConfirmData_Result.cs">
       <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderConfirmed.cs">

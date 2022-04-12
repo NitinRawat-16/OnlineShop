@@ -21,6 +21,7 @@ namespace DataModelLayer
             this.OrderConfirmeds = new HashSet<OrderConfirmed>();
             this.Orders = new HashSet<Order>();
             this.AspNetRoles = new HashSet<AspNetRole>();
+            this.OrderCanceleds = new HashSet<OrderCanceled>();
         }
     
         public string Id { get; set; }
@@ -41,5 +42,6 @@ namespace DataModelLayer
         public virtual ICollection<OrderConfirmed> OrderConfirmeds { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        public virtual ICollection<OrderCanceled> OrderCanceleds { get; set; }
     }
 }
