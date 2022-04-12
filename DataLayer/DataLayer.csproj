@@ -78,6 +78,7 @@
     <EntityDeploy Include="DatabaseConnection.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DatabaseConnection.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>DataModelLayer</CustomToolNamespace>
     </EntityDeploy>
     <None Include="DatabaseConnection.edmx.diagram">
       <DependentUpon>DatabaseConnection.edmx</DependentUpon>

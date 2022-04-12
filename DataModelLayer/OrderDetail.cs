@@ -28,6 +28,7 @@ namespace DataModelLayer
         public string PaymentMode { get; set; }
         public Nullable<System.DateTime> OrderDeliveryDate { get; set; }
         public Nullable<System.DateTime> OrderExcpectedDelivery { get; set; }
+        public string Size { get; set; }
     
         public virtual ICollection<Order> Orders { get; set; }
     }

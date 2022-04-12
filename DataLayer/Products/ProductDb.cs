@@ -9,6 +9,7 @@ namespace DataLayer
 {
     public class ProductDb
     {
+        
         readonly PortalEntities _db;
         public ProductDb()
         {

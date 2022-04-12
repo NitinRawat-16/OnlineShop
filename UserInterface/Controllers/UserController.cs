@@ -23,5 +23,7 @@ namespace UserInterface.Controllers
            var products = _viewProducts.ShowAllProducts();
             return View(products);
         }
+
+
     }
 }
