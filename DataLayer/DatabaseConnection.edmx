@@ -154,6 +154,14 @@
           <Property Name="L" Type="int" Nullable="false" />
           <Property Name="Xl" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="WishListId" />
+          </Key>
+          <Property Name="WishListId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
         <Association Name="FK__OrderConf__Produ__7D439ABD">
           <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
           <End Role="OrderConfirmed" Type="Self.OrderConfirmed" Multiplicity="*" />
@@ -274,6 +282,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WishList_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_User">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_WishList1">
+          <End Role="WishList" Type="Self.WishList" Multiplicity="1" />
+          <End Role="WishList1" Type="Self.WishList" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WishList">
+              <PropertyRef Name="WishListId" />
+            </Principal>
+            <Dependent Role="WishList1">
+              <PropertyRef Name="WishListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="AlertProductDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DeliveryOrderData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="OrderConfirmData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -291,6 +335,7 @@
           <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSize" EntityType="Self.ProductSize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WishList" EntityType="Self.WishList" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__OrderConf__Produ__7D439ABD" Association="Self.FK__OrderConf__Produ__7D439ABD">
             <End Role="Products" EntitySet="Products" />
             <End Role="OrderConfirmed" EntitySet="OrderConfirmed" />
@@ -330,6 +375,18 @@
           <AssociationSet Name="FK_Products_ProductSize" Association="Self.FK_Products_ProductSize">
             <End Role="ProductSize" EntitySet="ProductSize" />
             <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_Products" Association="Self.FK_WishList_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_User" Association="Self.FK_WishList_User">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_WishList1" Association="Self.FK_WishList_WishList1">
+            <End Role="WishList" EntitySet="WishList" />
+            <End Role="WishList1" EntitySet="WishList" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -387,6 +444,7 @@
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_AspNetUsers" FromRole="AspNetUsers" ToRole="Orders" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
           <NavigationProperty Name="OrderCanceleds" Relationship="Model.FK_OrderCanceled_AspNetUsers" FromRole="AspNetUser" ToRole="OrderCanceled" />
+          <NavigationProperty Name="WishLists" Relationship="Model.FK_WishList_User" FromRole="AspNetUser" ToRole="WishList" />
         </EntityType>
         <EntityType Name="OrderConfirmed">
           <Key>
@@ -463,6 +521,7 @@
           <NavigationProperty Name="ProductSize" Relationship="Self.FK_Products_ProductSize" FromRole="Products" ToRole="ProductSize" />
           <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="OrderCanceleds" Relationship="Model.FK_OrderCanceled_Products" FromRole="Product" ToRole="OrderCanceled" />
+          <NavigationProperty Name="WishLists" Relationship="Model.FK_WishList_Products" FromRole="Product" ToRole="WishList" />
         </EntityType>
         <EntityType Name="ProductSize">
           <Key>
@@ -659,6 +718,19 @@
           <FunctionImport Name="AlertProductDetails" ReturnType="Collection(Model.AlertProductDetails_Result)" />
           <FunctionImport Name="DeliveryOrderData" ReturnType="Collection(Model.DeliveryOrderData_Result)" />
           <FunctionImport Name="OrderConfirmData" ReturnType="Collection(Model.OrderConfirmData_Result)" />
+          <EntitySet Name="WishLists" EntityType="Model.WishList" />
+          <AssociationSet Name="FK_WishList_User" Association="Model.FK_WishList_User">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="WishList" EntitySet="WishLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_Products" Association="Model.FK_WishList_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="WishList" EntitySet="WishLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_WishList1" Association="Model.FK_WishList_WishList1">
+            <End Role="WishList" EntitySet="WishLists" />
+            <End Role="WishList1" EntitySet="WishLists" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cart">
           <Key>
@@ -760,6 +832,54 @@
           <Property Type="Int32" Name="Available" Nullable="true" />
           <Property Type="String" Name="PaymentMode" Nullable="true" MaxLength="20" />
         </ComplexType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="WishListId" />
+          </Key>
+          <Property Name="WishListId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Model.FK_WishList_User" FromRole="WishList" ToRole="AspNetUser" />
+          <NavigationProperty Name="Product" Relationship="Model.FK_WishList_Products" FromRole="WishList" ToRole="Product" />
+          <NavigationProperty Name="WishList1" Relationship="Model.FK_WishList_WishList1" FromRole="WishList" ToRole="WishList1" />
+          <NavigationProperty Name="WishList2" Relationship="Model.FK_WishList_WishList1" FromRole="WishList1" ToRole="WishList" />
+        </EntityType>
+        <Association Name="FK_WishList_User">
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Model.WishList" Role="WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_Products">
+          <End Type="Model.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="Model.WishList" Role="WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_WishList1">
+          <End Type="Model.WishList" Role="WishList" Multiplicity="1" />
+          <End Type="Model.WishList" Role="WishList1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WishList">
+              <PropertyRef Name="WishListId" />
+            </Principal>
+            <Dependent Role="WishList1">
+              <PropertyRef Name="WishListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -973,6 +1093,15 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="WishLists">
+            <EntityTypeMapping TypeName="Model.WishList">
+              <MappingFragment StoreEntitySet="WishList">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="WishListId" ColumnName="WishListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

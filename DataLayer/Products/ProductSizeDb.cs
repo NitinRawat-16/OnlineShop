@@ -1,29 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataModelLayer;
 
 namespace DataLayer
 {
     public  class ProductSizeDb
     {
-        readonly PortalEntities _db;
-        public ProductSizeDb()
-        {
-            _db = new PortalEntities();
-        }
-
+        PortalEntities db= new PortalEntities();
         public IEnumerable<ProductSize> GetAll()
         {
-            return _db.ProductSizes;
+            return db.ProductSizes;
+        }
+        public ProductSize GetById(int id)
+        {
+            return db.ProductSizes.SingleOrDefault(m=> m.ProductSizeId == id);
         }
 
         public void Insert(ProductSize productSize)
         {
-            _db.ProductSizes.Add(productSize);
-            _db.SaveChanges();
+            db.ProductSizes.Add(productSize);
+            db.SaveChanges();
         }
+        public void Edit(int id,ProductSize productSize)
+        {
+            var productSizeInDb = GetById(id);
+           
+            productSizeInDb.S = productSize.S;
+            productSizeInDb.M = productSize.M;
+            productSizeInDb.L = productSize.L;
+            productSizeInDb.Xl = productSize.Xl;
+            db.SaveChanges();
+        }
+
+        public void AddProductQuantity(int id,ProductSize productSize)
+        {
+            var sizeInDb = GetById(id);
+            sizeInDb.S += productSize.S;
+            sizeInDb.M += productSize.M;
+            sizeInDb.L += productSize.L;
+            sizeInDb.Xl += productSize.Xl;
+            db.SaveChanges();
+        }
+
     }
 }

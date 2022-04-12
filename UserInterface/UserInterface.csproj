@@ -480,6 +480,10 @@
     <Content Include="Views\Admins\ProductAlert.cshtml" />
     <Content Include="Views\Admins\ProductList.cshtml" />
     <Content Include="Views\Admins\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Products\EditProduct.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Products\ViewProducts.cshtml" />
+    <Content Include="Views\Products\AddProductQuantity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

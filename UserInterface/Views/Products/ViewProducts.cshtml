@@ -1,0 +1,40 @@
+﻿@model  IEnumerable<DataModelLayer.Product>
+@{
+    ViewBag.Title = "ViewProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewProducts</h2>
+<table id="products" class="table table-bordered table-hover">
+
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    @foreach (var items in Model)
+    {
+        <tr>
+            <td>
+                <img style="width:200px; height:150px;" src="@Url.Content(items.ProductImage)" class="img-rounded" alt="Waterfall" />
+            </td>
+            <td>@items.ProductName</td>
+            <td>@items.ProductPrice</td>
+            <td>@items.ProductDescription</td>
+            <td>@Html.ActionLink("Edit","Edit",new { id = items.ProductId})</td>
+        </tr>
+    }
+</table>
+
+@section scripts {
+    <script>
+
+            $(document).ready(function () {
+                $("#products").DataTable({});
+            });
+    </script>
+}
+

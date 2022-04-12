@@ -2,16 +2,57 @@
 }
 
 .containerbox {
-    border: solid 2px red;
-    width: 600px;
+    width: 100%;
     margin: auto;
-  
+    background-color: linen;
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 8px;
+    border: solid 1px purple;
 }
 
-.box {
-    display: flex;
-    width:600px;
+.Box {
+    display: inline-block;
 }
-c-box{
-    display:flex;
+
+#size {
+    display: flex;
+}
+
+.sub-size {
+    margin-right: 20px;
+}
+
+#second-item {
+    float: right;
+}
+
+.label-class {
+    display: inline;
+    font-size: medium;
+}
+
+.submit-class {
+}
+
+#h2 {
+    padding-bottom: 5px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: purple;
+    font-family: 'Nirmala UI';
+    color: black;
+    margin-top: 0;
+}
+
+.form-control {
+    border: solid 1px purple;
+}
+
+.error {
+    color: red;
+}
+
+.container1{
+background-color: aliceblue;
 }

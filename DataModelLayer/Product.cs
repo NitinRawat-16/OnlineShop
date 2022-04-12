@@ -20,6 +20,7 @@ namespace DataModelLayer
             this.Orders = new HashSet<Order>();
             this.Carts = new HashSet<Cart>();
             this.OrderCanceleds = new HashSet<OrderCanceled>();
+            this.WishLists = new HashSet<WishList>();
         }
     
         public int ProductId { get; set; }
@@ -40,5 +41,6 @@ namespace DataModelLayer
         public virtual ProductSize ProductSize { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<OrderCanceled> OrderCanceleds { get; set; }
+        public virtual ICollection<WishList> WishLists { get; set; }
     }
 }
