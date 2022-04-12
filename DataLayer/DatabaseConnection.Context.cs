@@ -15,10 +15,10 @@ namespace DataModelLayer
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PortalEntities1 : DbContext
+    public partial class PortalEntities : DbContext
     {
-        public PortalEntities1()
-            : base("name=PortalEntities1")
+        public PortalEntities()
+            : base("name=PortalEntities")
         {
         }
     
