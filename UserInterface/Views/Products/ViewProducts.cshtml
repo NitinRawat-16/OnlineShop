@@ -3,38 +3,28 @@
     ViewBag.Title = "ViewProducts";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Content/ProductSheet.css" rel="stylesheet" />
 <h2>ViewProducts</h2>
-<table id="products" class="table table-bordered table-hover">
 
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    @foreach (var items in Model)
-    {
-        <tr>
-            <td>
-                <img style="width:200px; height:150px;" src="@Url.Content(items.ProductImage)" class="img-rounded" alt="Waterfall" />
-            </td>
-            <td>@items.ProductName</td>
-            <td>@items.ProductPrice</td>
-            <td>@items.ProductDescription</td>
-            <td>@Html.ActionLink("Edit","Edit",new { id = items.ProductId})</td>
-        </tr>
-    }
-</table>
+@foreach (var items in Model)
+{
+<div class="">
+    <div class="col-lg-4 thumbnail display">
+        <img src="@Url.Content(items.ProductImage)" alt="Waterfall" />
 
-@section scripts {
-    <script>
+        <div class="caption Name">
+            <h4> <span> @items.ProductName </span></h4>
+        </div>
 
-            $(document).ready(function () {
-                $("#products").DataTable({});
-            });
-    </script>
+        <div class="caption ">
+            <span>@items.ProductDescription </span>
+        </div>
+        <div class="caption">
+            <span class="btn-danger">Rs. @items.ProductPrice/-</span>
+        </div>
+    </div>
+</div>
+
 }
+
 

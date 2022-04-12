@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using BusinessLogicLayer;
 using UserInterface.ViewModel;
 
-
 namespace UserInterface.Controllers
 {
     public class ProductsController : Controller
@@ -147,6 +146,11 @@ namespace UserInterface.Controllers
             product.AddProductQuantity(quantity, productViewModel.product.ProductId);
 
           return RedirectToAction("ProductList", "Admins");
+        }
+
+        public ActionResult Views()
+        {
+            return View();
         }
     }
 }
