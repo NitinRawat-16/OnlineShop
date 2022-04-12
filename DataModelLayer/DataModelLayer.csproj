@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminPartial.cs" />
     <Compile Include="AlertProductDetails_Result.cs">
       <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
     </Compile>
