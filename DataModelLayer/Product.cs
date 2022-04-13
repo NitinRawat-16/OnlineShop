@@ -16,10 +16,16 @@ namespace DataModelLayer
     {
         public Product()
         {
+<<<<<<< HEAD
+            this.OrderConfirmeds = new HashSet<OrderConfirmed>();
+            this.Orders = new HashSet<Order>();
+=======
             this.Carts = new HashSet<Cart>();
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
             this.OrderCanceleds = new HashSet<OrderCanceled>();
             this.OrderConfirmeds = new HashSet<OrderConfirmed>();
             this.WishLists = new HashSet<WishList>();
+            this.Carts = new HashSet<Cart>();
         }
     
         public int ProductId { get; set; }
@@ -34,11 +40,19 @@ namespace DataModelLayer
         public string ProductImage { get; set; }
         public int ProductPrice { get; set; }
     
+<<<<<<< HEAD
+        public virtual ICollection<OrderConfirmed> OrderConfirmeds { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
+        public virtual ProductSize ProductSize { get; set; }
+=======
         public virtual ICollection<Cart> Carts { get; set; }
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         public virtual ICollection<OrderCanceled> OrderCanceleds { get; set; }
         public virtual ICollection<OrderConfirmed> OrderConfirmeds { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ProductSize ProductSize { get; set; }
         public virtual ICollection<WishList> WishLists { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

@@ -38,9 +38,12 @@ namespace DataModelLayer
         public virtual DbSet<OrderCanceled> OrderCanceleds { get; set; }
         public virtual DbSet<WishList> WishLists { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
+<<<<<<< HEAD
+=======
         public virtual DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
         public virtual DbSet<OrderConfirmed> OrderConfirmeds { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
     
         public virtual ObjectResult<AlertProductDetails_Result> AlertProductDetails()
         {

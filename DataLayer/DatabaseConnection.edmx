@@ -64,6 +64,8 @@
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
+<<<<<<< HEAD
+=======
         </EntityType>
         <EntityType Name="DeliveryAddress">
           <Key>
@@ -76,6 +78,7 @@
           <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PhoneNumber" Type="varchar" MaxLength="11" Nullable="false" />
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         </EntityType>
         <EntityType Name="OrderCanceled">
           <Key>
@@ -182,6 +185,18 @@
             </Principal>
             <Dependent Role="OrderConfirmed">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -344,6 +359,10 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cart_AspNetUsers" Association="Self.FK_Cart_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cart_Product" Association="Self.FK_Cart_Product">
             <End Role="Products" EntitySet="Products" />
             <End Role="Cart" EntitySet="Cart" />
@@ -441,8 +460,29 @@
           <NavigationProperty Name="OrderCanceleds" Relationship="Model.FK_OrderCanceled_AspNetUsers" FromRole="AspNetUser" ToRole="OrderCanceled" />
           <NavigationProperty Name="WishLists" Relationship="Model.FK_WishList_User" FromRole="AspNetUser" ToRole="WishList" />
           <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_AspNetUsers" FromRole="AspNetUser" ToRole="Cart" />
+<<<<<<< HEAD
+        </EntityType>
+        <EntityType Name="OrderConfirmed">
+          <Key>
+            <PropertyRef Name="OrderConfirmedId" />
+          </Key>
+          <Property Name="OrderConfirmedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="CustomerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerMobile" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OrderStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDeliveryUpto" Type="DateTime" Precision="0" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_OrderConfirmed_OrderConfirmed1" FromRole="OrderConfirmed" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderConf__Produ__7D439ABD" FromRole="OrderConfirmed" ToRole="Products" />
+=======
           <NavigationProperty Name="DeliveryAddresses" Relationship="Model.FK_DeliveryAddress_AspNetUsers" FromRole="AspNetUser" ToRole="DeliveryAddress" />
           <NavigationProperty Name="OrderConfirmeds" Relationship="Model.FK_OrderConfirmed_OrderConfirmed1" FromRole="AspNetUser" ToRole="OrderConfirmed" />
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -477,7 +517,34 @@
           </Key>
           <Property Name="ProductCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductCategoryType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+<<<<<<< HEAD
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductCategory" FromRole="ProductCategory" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductAddedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ProductAvailability" Type="Int32" Nullable="false" />
+          <Property Name="TotalProductAdded" Type="Int32" Nullable="false" />
+          <Property Name="ProductAdminNotification" Type="Int32" Nullable="false" />
+          <Property Name="ProductSizeId" Type="Int32" Nullable="false" />
+          <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductPrice" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderConfirmeds" Relationship="Self.FK__OrderConf__Produ__7D439ABD" FromRole="Products" ToRole="OrderConfirmed" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ProductI__787EE5A0" FromRole="Products" ToRole="Orders" />
+          <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_ProductCategory" FromRole="Products" ToRole="ProductCategory" />
+          <NavigationProperty Name="ProductSize" Relationship="Self.FK_Products_ProductSize" FromRole="Products" ToRole="ProductSize" />
+          <NavigationProperty Name="OrderCanceleds" Relationship="Model.FK_OrderCanceled_Products" FromRole="Product" ToRole="OrderCanceled" />
+          <NavigationProperty Name="WishLists" Relationship="Model.FK_WishList_Products" FromRole="Product" ToRole="WishList" />
+          <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
+=======
           <NavigationProperty Name="Products" Relationship="Model.FK_Products_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         </EntityType>
         <EntityType Name="ProductSize">
           <Key>
@@ -580,6 +647,13 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="OrderCanceled" EntitySet="OrderCanceleds" />
           </AssociationSet>
+<<<<<<< HEAD
+          <AssociationSet Name="FK_OrderCanceled_Products" Association="Model.FK_OrderCanceled_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderCanceled" EntitySet="OrderCanceleds" />
+          </AssociationSet>
+=======
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
           <FunctionImport Name="AlertProductDetails" ReturnType="Collection(Model.AlertProductDetails_Result)" />
           <FunctionImport Name="DeliveryOrderData" ReturnType="Collection(Model.DeliveryOrderData_Result)" />
           <FunctionImport Name="OrderConfirmData" ReturnType="Collection(Model.OrderConfirmData_Result)" />
@@ -597,6 +671,8 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
+<<<<<<< HEAD
+=======
           <EntitySet Name="DeliveryAddresses" EntityType="Model.DeliveryAddress" />
           <EntitySet Name="OrderConfirmeds" EntityType="Model.OrderConfirmed" />
           <EntitySet Name="Products" EntityType="Model.Product" />
@@ -608,10 +684,13 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="OrderConfirmed" EntitySet="OrderConfirmeds" />
           </AssociationSet>
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
           <AssociationSet Name="FK_Cart_Product" Association="Model.FK_Cart_Product">
             <End Role="Product" EntitySet="Products" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
+<<<<<<< HEAD
+=======
           <AssociationSet Name="FK_OrderCanceled_Products" Association="Model.FK_OrderCanceled_Products">
             <End Role="Product" EntitySet="Products" />
             <End Role="OrderCanceled" EntitySet="OrderCanceleds" />
@@ -632,6 +711,7 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="WishList" EntitySet="WishLists" />
           </AssociationSet>
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         </EntityContainer>
         <EntityType Name="OrderCanceled">
           <Key>
@@ -662,6 +742,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+        <Association Name="FK_OrderCanceled_Products">
+          <End Type="Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Model.OrderCanceled" Role="OrderCanceled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderCanceled">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+=======
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         <ComplexType Name="AlertProductDetails_Result">
           <Property Type="Int32" Name="ProductId" Nullable="false" />
           <Property Type="String" Name="ProductName" Nullable="false" MaxLength="255" />
@@ -757,6 +852,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+=======
         <EntityType Name="DeliveryAddress">
           <Key>
             <PropertyRef Name="Id" />
@@ -834,6 +931,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         <Association Name="FK_Cart_Product">
           <End Type="Model.Product" Role="Product" Multiplicity="1" />
           <End Type="Model.Cart" Role="Cart" Multiplicity="*" />
@@ -846,6 +944,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+=======
         <Association Name="FK_OrderCanceled_Products">
           <End Type="Model.Product" Role="Product" Multiplicity="1" />
           <End Type="Model.OrderCanceled" Role="OrderCanceled" Multiplicity="*" />
@@ -906,6 +1006,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1093,6 +1194,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
+=======
           <EntitySetMapping Name="DeliveryAddresses">
             <EntityTypeMapping TypeName="Model.DeliveryAddress">
               <MappingFragment StoreEntitySet="DeliveryAddress">
@@ -1140,6 +1243,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
