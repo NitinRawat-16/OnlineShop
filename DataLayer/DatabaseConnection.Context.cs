@@ -12,11 +12,13 @@ namespace DataModelLayer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class PortalEntities : DbContext
+    public partial class PortalEntities1 : DbContext
     {
-        public PortalEntities()
-            : base("name=PortalEntities")
+        public PortalEntities1()
+            : base("name=PortalEntities1")
         {
         }
     
@@ -35,5 +37,23 @@ namespace DataModelLayer
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductSize> ProductSizes { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<OrderCanceled> OrderCanceleds { get; set; }
+        public virtual DbSet<WishList> WishLists { get; set; }
+    
+        public virtual ObjectResult<AlertProductDetails_Result> AlertProductDetails()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AlertProductDetails_Result>("AlertProductDetails");
+        }
+    
+        public virtual ObjectResult<DeliveryOrderData_Result> DeliveryOrderData()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DeliveryOrderData_Result>("DeliveryOrderData");
+        }
+    
+        public virtual ObjectResult<OrderConfirmData_Result> OrderConfirmData()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OrderConfirmData_Result>("OrderConfirmData");
+        }
     }
 }
