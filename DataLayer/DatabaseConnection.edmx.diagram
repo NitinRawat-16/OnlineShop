@@ -20,18 +20,11 @@
         <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Model.OrderCanceled" Width="1.5" PointX="8.25" PointY="10.625" />
         <AssociationConnector Association="Model.FK_OrderCanceled_AspNetUsers" />
-<<<<<<< HEAD
-        <AssociationConnector Association="Model.FK_OrderCanceled_Products" />
-=======
->>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         <EntityTypeShape EntityType="Model.WishList" Width="1.5" PointX="11.25" PointY="11.125" />
         <AssociationConnector Association="Model.FK_WishList_User" />
         <AssociationConnector Association="Model.FK_WishList_WishList1" />
         <EntityTypeShape EntityType="Model.Cart" Width="1.5" PointX="11.25" PointY="14.25" />
         <AssociationConnector Association="Model.FK_Cart_AspNetUsers" />
-<<<<<<< HEAD
-        <AssociationConnector Association="Model.FK_Cart_Product" />
-=======
         <EntityTypeShape EntityType="Model.DeliveryAddress" Width="1.5" PointX="5.25" PointY="1.5" />
         <EntityTypeShape EntityType="Model.OrderConfirmed" Width="1.5" PointX="8.25" PointY="15" />
         <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="6" PointY="15.875" />
@@ -43,7 +36,6 @@
         <AssociationConnector Association="Model.FK_Products_ProductCategory" />
         <AssociationConnector Association="Model.FK_Products_ProductSize" />
         <AssociationConnector Association="Model.FK_WishList_Products" />
->>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
