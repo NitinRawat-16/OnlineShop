@@ -8,8 +8,7 @@
 
 @foreach (var items in Model)
 {
-<div class="">
-    <div class="col-lg-4 thumbnail display">
+    <div class="col-md-3 thumbnail display">
         <img src="@Url.Content(items.ProductImage)" alt="Waterfall" />
 
         <div class="caption Name">
@@ -23,7 +22,6 @@
             <span class="btn-danger">Rs. @items.ProductPrice/-</span>
         </div>
     </div>
-</div>
 
 }
 
