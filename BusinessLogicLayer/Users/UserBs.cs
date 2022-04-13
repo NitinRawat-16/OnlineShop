@@ -23,5 +23,10 @@ namespace BusinessLogicLayer.Users
             _userDb.AddAddress(delivery);
         }
 
+        public IEnumerable<Cart> GetCartItemsByUser(string userName)
+        {
+           return _userDb.GetCartItemsByUser(userName);
+        }
+
     }
 }

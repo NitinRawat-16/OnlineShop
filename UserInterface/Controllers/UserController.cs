@@ -6,7 +6,7 @@ using UserInterface.ViewModel;
 
 namespace UserInterface.Controllers
 {
-    [Authorize(Roles ="User")]
+    [Authorize(Roles = "User")]
     public class UserController : Controller
     {
         private readonly UserBs _userBs;
@@ -22,7 +22,7 @@ namespace UserInterface.Controllers
 
         public ActionResult ShowProducts()
         {
-           var products = _userBs.ShowAllProducts();
+            var products = _userBs.ShowAllProducts();
             return View(products);
         }
 
@@ -38,7 +38,7 @@ namespace UserInterface.Controllers
 
         public void BuyNow()
         {
-           
+            var carts = _userBs.GetCartItemsByUser(User.Identity.Name);
         }
 
         public void AddToWishlist()

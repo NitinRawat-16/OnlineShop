@@ -25,5 +25,11 @@ namespace DataLayer.Users
             _dbContext.SaveChanges();
         }
 
+        public IEnumerable<Cart> GetCartItemsByUser(string userName)
+        {
+            var user = _dbContext.AspNetUsers.Where(u => u.UserName == userName).First();
+            return _dbContext.Carts.Include(c => c.Product).Include(u => u.AspNetUser).Where(u => u.UserId == user.Id).ToList();
+        }
+
     }
 }

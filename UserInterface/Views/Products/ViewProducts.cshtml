@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<DataModelLayer.Product>
+﻿@model  UserInterface.ViewModel.ProductViewModel
 @{
     ViewBag.Title = "ViewProducts";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,18 +12,18 @@
     <div class="box">
 
         <div class="col-md-3 thumbnail display">
-            <img src="@Url.Content(items.ProductImage)" alt="Waterfall" />
+            <img src="@Url.Content(items.products.productImage)" alt="Waterfall" />
 
             <div id="item">
                 <div class="caption Name">
-                    <h4> <span class="caption Name"> @items.ProductName </span></h4>
+                    <h4> <span class="caption Name"> @items.products.ProductName </span></h4>
                 </div>
 
                 <div class="caption">
-                    <span>@items.ProductDescription </span>
+                    <span>@items.products.ProductDescription </span>
                 </div>
                 <div class="caption">
-                    <span class="btn-danger">Rs. @items.ProductPrice/-</span>
+                    <span class="btn-danger">Rs. @items.products.ProductPrice/-</span>
                 </div>
             </div>
             <div>
@@ -34,4 +34,5 @@
         </div>
     </div>
 }
+
 

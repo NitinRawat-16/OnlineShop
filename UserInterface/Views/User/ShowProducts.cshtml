@@ -3,50 +3,78 @@
     ViewBag.Title = "ShowProducts";
     Layout = "~/Views/User/_Layout.cshtml";
 }
-
+<link href="~/Content/ProductSheet.css" rel="stylesheet" />
 <h2>ShowProducts</h2>
 
 <hr />
 
-<table id="products" class="table table-bordered table-hover">
+@foreach (var items in Model)
+{
+    <div id ="products" class="box">
 
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Add to cart</th>
-            <th>Wishlist</th>
-        </tr>
-    </thead>
-    @foreach (var items in Model)
-    {
-        <tr>
-            <td>
-                <img style="width:200px; height:150px;" src="@Url.Content(items.ProductImage)" class="img-rounded" alt="Waterfall" />
-            </td>
-            <td>@items.ProductName</td>
-            <td>@items.ProductPrice</td>
-            <td>@items.ProductDescription</td>
-            <td>
-                <a href="@Url.Action("Cart", "", items)" id="cart"
-                   class="glyphicon glyphicon-shopping-cart"
-                   style="margin:30px; color:blue;">
-                    <i class="bi bi-cart-plus"></i>(Price @items.ProductPrice.ToString("c"))
-                </a>
-            </td>
-            <td>Wishlist</td>
+        <div class="col-md-3 thumbnail display">
+            <img src="@Url.Content(items.ProductImage)" alt="Waterfall" />
 
-        </tr>
-    }
-</table>
+            <div id="item">
+                <div class="caption Name">
+                    <h4> <span class="caption Name"> @items.ProductName </span></h4>
+                </div>
 
-@section scripts {
+                <div class="caption">
+                    <span>@items.ProductDescription </span>
+                </div>
+                <div class="caption">
+                    <span class="btn-danger">Rs. @items.ProductPrice/-</span>
+                </div>
+            </div>
+            <div>
+                <a href="@Url.Action("BuyNow", "User", items)" class="btn btn-lg btn-block btn-warning button">Buy Now</a>
+                <a class="btn btn-lg btn-block button btn-orange">Add To Cart </a>
+                <a href="@Url.Action("AddToWishlist", "User", items)" class="btn btn-lg btn-block button btn-warning">Wishlist</a>
+            </div>
+        </div>
+    </div>
+}
+
+@*<table id="products" class="table table-bordered table-hover">
+
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Add to cart</th>
+                <th>Wishlist</th>
+            </tr>
+        </thead>
+        @foreach (var items in Model)
+        {
+            <tr>
+                <td>
+                    <img style="width:200px; height:150px;" src="@Url.Content(items.ProductImage)" class="img-rounded" alt="Waterfall" />
+                </td>
+                <td>@items.ProductName</td>
+                <td>@items.ProductPrice</td>
+                <td>@items.ProductDescription</td>
+                <td>
+                    <a href="@Url.Action("Cart", "", items)" id="cart"
+                       class="glyphicon glyphicon-shopping-cart"
+                       style="margin:30px; color:blue;">
+                        <i class="bi bi-cart-plus"></i>(Price @items.ProductPrice.ToString("c"))
+                    </a>
+                </td>
+                <td>Wishlist</td>
+
+            </tr>
+        }
+    </table>*@
+
+@*@section scripts {
     <script>
         $(document).ready(function () {
             $('#products').DataTable();
         });
     </script>
-}
+}*@
 

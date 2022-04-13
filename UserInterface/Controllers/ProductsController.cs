@@ -120,9 +120,14 @@ namespace UserInterface.Controllers
 
         public ActionResult ViewProducts()
         {
-            var products = product.GetAll().ToList();
-
-            return View(products);
+            var viewModel = new ProductViewModel
+            {
+                products = product.GetAll().ToList(),
+                productSizes = productSize.GetAll().ToList(),
+                productCategories = productCategory.GetAll().ToList()
+            };
+           
+            return View(viewModel);
         }
 
         public ActionResult AddProductQuantity(int id )
