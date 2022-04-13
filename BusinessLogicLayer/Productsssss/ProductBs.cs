@@ -8,17 +8,16 @@ using DataModelLayer;
 
 namespace BusinessLogicLayer
 {
-    public class ProductCategoryBs
+    public class ProductBs
     {
-        ProductCategoryDb db = new ProductCategoryDb();
-        public IEnumerable<ProductCategory> GetAll()
+        ProductDb db= new ProductDb();
+        public IEnumerable<Product> GetAll()
         {
             return db.GetAll();
         }
-
-        public ProductCategory GetById(int id)
+        public void Insert(Product product)
         {
-            return db.GetById(id);
+            db.Insert(product);
         }
     }
 }

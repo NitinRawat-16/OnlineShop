@@ -1,0 +1,28 @@
+﻿@model  IEnumerable<DataModelLayer.Product>
+@{
+    ViewBag.Title = "ViewProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/ProductSheet.css" rel="stylesheet" />
+<h2>ViewProducts</h2>
+
+@foreach (var items in Model)
+{
+    <div class="col-md-3 thumbnail display">
+        <img src="@Url.Content(items.ProductImage)" alt="Waterfall" />
+
+        <div class="caption Name">
+            <h4> <span> @items.ProductName </span></h4>
+        </div>
+
+        <div class="caption ">
+            <span>@items.ProductDescription </span>
+        </div>
+        <div class="caption">
+            <span class="btn-danger">Rs. @items.ProductPrice/-</span>
+        </div>
+    </div>
+
+}
+
+

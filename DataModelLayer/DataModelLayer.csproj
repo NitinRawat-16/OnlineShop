@@ -92,10 +92,15 @@
     <Compile Include="ProductSize.cs">
       <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductSizeValidations.cs" />
+    <Compile Include="ProductValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoppingPortalEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WishList.cs">
       <DependentUpon>ShoppingPortalEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>

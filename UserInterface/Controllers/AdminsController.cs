@@ -35,16 +35,6 @@ namespace UserInterface.Controllers
             return View(adminBll.GetProductsAlert());
         }
 
-
-
-
-
-
-
-
-
-
-
         public ActionResult Orders()
         {
             return View(adminBll.GetOrderConfirm());
@@ -152,6 +142,5 @@ namespace UserInterface.Controllers
             return RedirectToAction("OrderDelivery");
 
         }
-
     }
 }

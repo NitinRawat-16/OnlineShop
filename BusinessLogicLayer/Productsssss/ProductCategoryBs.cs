@@ -15,10 +15,5 @@ namespace BusinessLogicLayer
         {
             return db.GetAll();
         }
-
-        public ProductCategory GetById(int id)
-        {
-            return db.GetById(id);
-        }
     }
 }

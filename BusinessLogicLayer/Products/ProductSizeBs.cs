@@ -15,5 +15,22 @@ namespace BusinessLogicLayer
         {
             db.Insert(productSize);
         }
+        public IEnumerable<ProductSize> GetAll()
+        {
+            return db.GetAll();
+        }
+
+        public ProductSize GetById(int id)
+        {
+            return db.GetById(id);
+        }
+        public void Edit(int id,ProductSize productSize)
+        {
+            db.Edit(id,productSize);
+        }
+        public void AddProductQuantity(int id,ProductSize productSize)
+        {
+            db.AddProductQuantity(id,productSize);
+        }
     }
 }
