@@ -9,6 +9,7 @@ using UserInterface.ViewModel;
 
 namespace UserInterface.Controllers
 {
+    [Authorize(Roles ="CanManagePortal")]
     public class AdminsController : Controller
     {
 

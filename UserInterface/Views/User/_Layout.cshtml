@@ -12,11 +12,11 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
 
         <div class="logo-div">
-            <div>
-                <a href="@Url.Action("Home", "Admins")">
-                    @*<img src="~/Images/LOGOFINAL.png" alt="Site Logo" class="logo-image" />*@
+            @*<div>
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/Images/LOGOFINAL.png" alt="Site Logo" class="logo-image" />
                 </a>
-            </div>
+            </div>*@
 
             <div class="container">
                 <div class="navbar-header">
@@ -25,13 +25,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @*   @Html.ActionLink("Admin", "Home", "Admins", new { area = "" }, new { @class = "navbar-brand" })*@
+                       @Html.ActionLink("Shopping Portal", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "", "")</li>
-                        <li>@Html.ActionLink("Products", "", "")</li>
-                        <li>@Html.ActionLink("Wishlist", "", "")</li>
+                        <li>@Html.ActionLink("Home", "Index", "User")</li>
+                        <li>@Html.ActionLink("Products", "ShowProducts", "User")</li>
+                        <li>@Html.ActionLink("Wishlist", "Wishlist", "User")</li>
+                        <li>
+                            <a href="@Url.Action("Cart", "User")" role="button" aria-expanded="false">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>@Session["count"]
+                                
+                            </a>
+                        </li>
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

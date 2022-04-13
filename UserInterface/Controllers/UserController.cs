@@ -5,6 +5,7 @@ using BusinessLogicLayer.Users;
 
 namespace UserInterface.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly ViewProducts _viewProducts;
@@ -22,6 +23,16 @@ namespace UserInterface.Controllers
         {
            var products = _viewProducts.ShowAllProducts();
             return View(products);
+        }
+
+        public ActionResult Wishlist()
+        {
+            return View();
+        }
+
+        public ActionResult Cart()
+        {
+            return View();
         }
 
 
