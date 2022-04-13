@@ -14,13 +14,8 @@ var codeStringGenerator = new CodeStringGenerator(code, typeMapper, ef);
 if (!typeMapper.VerifyCaseInsensitiveTypeUniqueness(typeMapper.GetAllGlobalItems(itemCollection), inputFile))
 { 
     return string.Empty; 
-<<<<<<< HEAD
-}     
- 
-=======
 }       
   
->>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
 WriteHeader(codeStringGenerator, fileManager);
 
 foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection))
