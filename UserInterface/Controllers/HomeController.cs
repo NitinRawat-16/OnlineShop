@@ -10,6 +10,11 @@ namespace UserInterface.Controllers
     {
         public ActionResult Index()
         {
+            if (User.IsInRole("CanManagePortal"))
+                return RedirectToAction("Home", "Admins");
+            if (User.IsInRole("User"))
+                return RedirectToAction("Index", "User");
+
             return View();
         }
 

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<DataModelLayer.Product>
 @{
     ViewBag.Title = "ShowProducts";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/User/_Layout.cshtml";
 }
 
 <h2>ShowProducts</h2>
@@ -30,7 +30,7 @@
             <td>@items.ProductPrice</td>
             <td>@items.ProductDescription</td>
             <td>
-                <a href="@Url.Action("AddToCart", "Cart", items)" id="cart"
+                <a href="@Url.Action("Cart", "", items)" id="cart"
                    class="glyphicon glyphicon-shopping-cart"
                    style="margin:30px; color:blue;">
                     <i class="bi bi-cart-plus"></i>(Price @items.ProductPrice.ToString("c"))

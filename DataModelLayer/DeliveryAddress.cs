@@ -12,15 +12,16 @@ namespace DataModelLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class WishList
+    public partial class DeliveryAddress
     {
-        public string WishListId { get; set; }
-        public Nullable<int> ProductId { get; set; }
+        public int Id { get; set; }
         public string UserId { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string PhoneNumber { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual WishList WishList1 { get; set; }
-        public virtual WishList WishList2 { get; set; }
-        public virtual Product Product { get; set; }
     }
 }
