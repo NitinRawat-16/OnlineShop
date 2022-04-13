@@ -30,7 +30,7 @@
             <td>@items.ProductPrice</td>
             <td>@items.ProductDescription</td>
             <td>
-                <a href="@Url.Action("AddToCart", "Cart", items)" id="cart"
+                <a href="@Url.Action("Cart", "", items)" id="cart"
                    class="glyphicon glyphicon-shopping-cart"
                    style="margin:30px; color:blue;">
                     <i class="bi bi-cart-plus"></i>(Price @items.ProductPrice.ToString("c"))

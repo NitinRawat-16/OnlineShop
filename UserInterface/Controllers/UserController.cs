@@ -35,6 +35,15 @@ namespace UserInterface.Controllers
             return View();
         }
 
+        public void BuyNow()
+        {
+           
+        }
+
+        public void AddToWishlist()
+        {
+
+        }
 
     }
 }

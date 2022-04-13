@@ -58,13 +58,12 @@
         </EntityType>
         <EntityType Name="Cart">
           <Key>
-            <PropertyRef Name="RecordId" />
+            <PropertyRef Name="CartId" />
           </Key>
-          <Property Name="RecordId" Type="int" Nullable="false" />
-          <Property Name="CartId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="DateCreated" Type="datetime" />
         </EntityType>
         <EntityType Name="OrderCanceled">
           <Key>
@@ -195,6 +194,18 @@
             </Principal>
             <Dependent Role="Orders">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -348,6 +359,10 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cart_AspNetUsers" Association="Self.FK_Cart_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cart_Product" Association="Self.FK_Cart_Product">
             <End Role="Products" EntitySet="Products" />
             <End Role="Cart" EntitySet="Cart" />
@@ -445,6 +460,7 @@
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
           <NavigationProperty Name="OrderCanceleds" Relationship="Model.FK_OrderCanceled_AspNetUsers" FromRole="AspNetUser" ToRole="OrderCanceled" />
           <NavigationProperty Name="WishLists" Relationship="Model.FK_WishList_User" FromRole="AspNetUser" ToRole="WishList" />
+          <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_AspNetUsers" FromRole="AspNetUser" ToRole="Cart" />
         </EntityType>
         <EntityType Name="OrderConfirmed">
           <Key>
@@ -519,9 +535,9 @@
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__ProductI__787EE5A0" FromRole="Products" ToRole="Orders" />
           <NavigationProperty Name="ProductCategory" Relationship="Self.FK_Products_ProductCategory" FromRole="Products" ToRole="ProductCategory" />
           <NavigationProperty Name="ProductSize" Relationship="Self.FK_Products_ProductSize" FromRole="Products" ToRole="ProductSize" />
-          <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="OrderCanceleds" Relationship="Model.FK_OrderCanceled_Products" FromRole="Product" ToRole="OrderCanceled" />
           <NavigationProperty Name="WishLists" Relationship="Model.FK_WishList_Products" FromRole="Product" ToRole="WishList" />
+          <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_Product" FromRole="Product" ToRole="Cart" />
         </EntityType>
         <EntityType Name="ProductSize">
           <Key>
@@ -701,15 +717,10 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="Carts" EntityType="Model.Cart" />
           <EntitySet Name="OrderCanceleds" EntityType="Model.OrderCanceled" />
           <AssociationSet Name="FK_OrderCanceled_AspNetUsers" Association="Model.FK_OrderCanceled_AspNetUsers">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="OrderCanceled" EntitySet="OrderCanceleds" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cart_Product" Association="Model.FK_Cart_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderCanceled_Products" Association="Model.FK_OrderCanceled_Products">
             <End Role="Product" EntitySet="Products" />
@@ -731,18 +742,16 @@
             <End Role="WishList" EntitySet="WishLists" />
             <End Role="WishList1" EntitySet="WishLists" />
           </AssociationSet>
+          <EntitySet Name="Carts" EntityType="Model.Cart" />
+          <AssociationSet Name="FK_Cart_AspNetUsers" Association="Model.FK_Cart_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_Product" Association="Model.FK_Cart_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Cart">
-          <Key>
-            <PropertyRef Name="RecordId" />
-          </Key>
-          <Property Name="RecordId" Type="Int32" Nullable="false" />
-          <Property Name="CartId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Product" Relationship="Model.FK_Cart_Product" FromRole="Cart" ToRole="Product" />
-        </EntityType>
         <EntityType Name="OrderCanceled">
           <Key>
             <PropertyRef Name="OrderCanceledId" />
@@ -769,18 +778,6 @@
             </Principal>
             <Dependent Role="OrderCanceled">
               <PropertyRef Name="CustomerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cart_Product">
-          <End Type="Model.Product" Role="Product" Multiplicity="1" />
-          <End Type="Model.Cart" Role="Cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="Cart">
-              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -877,6 +874,41 @@
             </Principal>
             <Dependent Role="WishList1">
               <PropertyRef Name="WishListId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Model.FK_Cart_AspNetUsers" FromRole="Cart" ToRole="AspNetUser" />
+          <NavigationProperty Name="Product" Relationship="Model.FK_Cart_Product" FromRole="Cart" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Cart_AspNetUsers">
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="Model.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_Product">
+          <End Type="Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Model.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1018,17 +1050,6 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="Model.Cart">
-              <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
-                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OrderCanceleds">
             <EntityTypeMapping TypeName="Model.OrderCanceled">
               <MappingFragment StoreEntitySet="OrderCanceled">
@@ -1099,6 +1120,16 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="WishListId" ColumnName="WishListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="Model.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

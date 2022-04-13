@@ -23,6 +23,7 @@ namespace DataModelLayer
             this.AspNetRoles = new HashSet<AspNetRole>();
             this.OrderCanceleds = new HashSet<OrderCanceled>();
             this.WishLists = new HashSet<WishList>();
+            this.Carts = new HashSet<Cart>();
         }
     
         public string Id { get; set; }
@@ -45,5 +46,6 @@ namespace DataModelLayer
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
         public virtual ICollection<OrderCanceled> OrderCanceleds { get; set; }
         public virtual ICollection<WishList> WishLists { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }
