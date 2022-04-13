@@ -46,8 +46,12 @@
     <Compile Include="Products\ProductCategoryBs.cs" />
     <Compile Include="Products\ProductSizeBs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="ShoppingCart\CartBs.cs" />
     <Compile Include="Users\ViewProducts.cs" />
+=======
+    <Compile Include="Users\UserBs.cs" />
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

@@ -528,8 +528,15 @@
     <Content Include="Views\Products\ViewProducts.cshtml" />
     <Content Include="Views\Products\AddProductQuantity.cshtml" />
     <Content Include="Views\Products\Views.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Cart\ViewCart.cshtml" />
     <Content Include="Views\Cart\ViewCartLogin.cshtml" />
+=======
+    <Content Include="Views\User\_Layout.cshtml" />
+    <Content Include="Views\User\Wishlist.cshtml" />
+    <Content Include="Views\User\Cart.cshtml" />
+    <Content Include="Views\User\AddDeliveryAddress.cshtml" />
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

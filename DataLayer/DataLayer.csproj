@@ -90,8 +90,12 @@
     <Compile Include="Products\ProductDb.cs" />
     <Compile Include="Products\ProductSizeDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="ShoppingCart\CartDb.cs" />
     <Compile Include="Users\ShowProducts.cs" />
+=======
+    <Compile Include="Users\UserDb.cs" />
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataModelLayer\DataModelLayer.csproj">

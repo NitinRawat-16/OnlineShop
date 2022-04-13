@@ -22,15 +22,26 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+<<<<<<< HEAD
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Products", "ShowProducts", "User")</li>
                     <li>
                         <a href="@Url.Action("ViewCart", "Cart")" role="button" aria-expanded="false">
                             <span class="glyphicon glyphicon-shopping-cart"></span>@Request.Cookies["count"].Values
+=======
+                    <li>@Html.ActionLink("Products", "ViewProducts", "Products")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    <li>
+                        <a href="@Url.Action("", "")" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>@Session["count"]
+
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
                         </a>
                     </li>
                 </ul>
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

@@ -14,9 +14,17 @@ namespace UserInterface.Controllers
         public HomeController()=> cartBs = new CartBs();
         public ActionResult Index()
         {
+<<<<<<< HEAD
            
                
             
+=======
+            if (User.IsInRole("CanManagePortal"))
+                return RedirectToAction("Home", "Admins");
+            if (User.IsInRole("User"))
+                return RedirectToAction("Index", "User");
+
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
             return View();
         }
 

@@ -21,6 +21,5 @@ namespace DataModelLayer
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual OrderDetail OrderDetail { get; set; }
-        public virtual Product Product { get; set; }
     }
 }

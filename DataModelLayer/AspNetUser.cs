@@ -18,12 +18,16 @@ namespace DataModelLayer
         {
             this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
-            this.OrderConfirmeds = new HashSet<OrderConfirmed>();
             this.Orders = new HashSet<Order>();
             this.AspNetRoles = new HashSet<AspNetRole>();
             this.OrderCanceleds = new HashSet<OrderCanceled>();
             this.WishLists = new HashSet<WishList>();
             this.Carts = new HashSet<Cart>();
+<<<<<<< HEAD
+=======
+            this.DeliveryAddresses = new HashSet<DeliveryAddress>();
+            this.OrderConfirmeds = new HashSet<OrderConfirmed>();
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
         }
     
         public string Id { get; set; }
@@ -41,11 +45,15 @@ namespace DataModelLayer
     
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual ICollection<OrderConfirmed> OrderConfirmeds { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
         public virtual ICollection<OrderCanceled> OrderCanceleds { get; set; }
         public virtual ICollection<WishList> WishLists { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
+<<<<<<< HEAD
+=======
+        public virtual ICollection<DeliveryAddress> DeliveryAddresses { get; set; }
+        public virtual ICollection<OrderConfirmed> OrderConfirmeds { get; set; }
+>>>>>>> 06c73ce624381c300aafa21ee58abe7bf39c7f81
     }
 }
