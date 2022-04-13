@@ -5,6 +5,7 @@ using BusinessLogicLayer.Users;
 
 namespace UserInterface.Controllers
 {
+    [Authorize(Roles ="User")]
     public class UserController : Controller
     {
         private readonly ViewProducts _viewProducts;
