@@ -22,9 +22,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Products", "ViewProducts", "Products")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    <li>
+                        <a href="@Url.Action("", "")" role="button" aria-expanded="false">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>@Session["count"]
+
+                        </a>
+                    </li>
                 </ul>
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

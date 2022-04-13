@@ -31,15 +31,16 @@ namespace DataModelLayer
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
-        public virtual DbSet<OrderConfirmed> OrderConfirmeds { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductSize> ProductSizes { get; set; }
         public virtual DbSet<OrderCanceled> OrderCanceleds { get; set; }
         public virtual DbSet<WishList> WishLists { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<DeliveryAddress> DeliveryAddresses { get; set; }
+        public virtual DbSet<OrderConfirmed> OrderConfirmeds { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     
         public virtual ObjectResult<AlertProductDetails_Result> AlertProductDetails()
         {

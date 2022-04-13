@@ -1,12 +1,14 @@
 ﻿using DataModelLayer;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace DataLayer.Users
 {
-    public class ShowProducts
+    public class UserDb
     {
         private readonly PortalEntities _dbContext;
-        public ShowProducts()
+        public UserDb()
         {
             _dbContext = new PortalEntities();
         }
@@ -16,5 +18,12 @@ namespace DataLayer.Users
             var products = _dbContext.Products;
             return products;
         }
+
+        public void AddAddress(DeliveryAddress deliveryAddress)
+        {
+            _dbContext.DeliveryAddresses.Add(deliveryAddress);
+            _dbContext.SaveChanges();
+        }
+
     }
 }

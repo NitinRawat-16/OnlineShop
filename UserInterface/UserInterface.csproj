@@ -488,6 +488,7 @@
     <Content Include="Views\User\_Layout.cshtml" />
     <Content Include="Views\User\Wishlist.cshtml" />
     <Content Include="Views\User\Cart.cshtml" />
+    <Content Include="Views\User\AddDeliveryAddress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
