@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLogicLayer;
 
 namespace UserInterface.Controllers
 {
     public class HomeController : Controller
     {
+        private CartBs cartBs;
+
+        public HomeController()=> cartBs = new CartBs();
         public ActionResult Index()
         {
+           
+               
+            
             return View();
         }
 

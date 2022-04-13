@@ -1,0 +1,56 @@
+﻿@model IEnumerable<DataModelLayer.Cart>
+@{
+    ViewBag.Title = "ViewCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table  table-bordered  table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.Product.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(m => m.Product.ProductPrice)
+        </th>
+        <th>
+           @Html.DisplayNameFor(m => m.Quantity)
+        </th>
+        <th>
+            Delete Product
+        </th>
+    </tr>
+    @{ 
+        int sum = 0;
+
+
+        foreach (var product in Model)
+        {
+           
+            sum = (sum + product.Product.ProductPrice) * product.Quantity;
+            <tr>
+                <td>@Html.DisplayFor(m => product.Product.ProductName)</td>
+                <td>@product.Product.ProductPrice.ToString("c")</td>
+                <td>@product.Quantity</td>
+                <td><a href="@Url.Action("Delete","Cart",product.Product)"><i class="bi bi-trash"></i>Remove</a></td>
+            </tr>
+        }
+    }
+<tr>
+    <td>Total</td>
+    <td>@sum.ToString("c")</td>
+    <td>
+        <a href="@Url.Action("BuyNow","Cart")" type="button">Buy Now</a>
+    </td>
+    <td>
+        <a href="@Url.Action("ShowProducts","User")" type="button" >Continue Shopping</a>
+    </td>
+</tr>
+</table>
+
+<style>
+    .table {
+        margin-top: 30px;
+    }
+</style>
+
+

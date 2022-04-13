@@ -46,6 +46,7 @@
     <Compile Include="Products\ProductCategoryBs.cs" />
     <Compile Include="Products\ProductSizeBs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingCart\CartBs.cs" />
     <Compile Include="Users\ViewProducts.cs" />
   </ItemGroup>
   <ItemGroup>

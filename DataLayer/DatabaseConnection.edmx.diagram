@@ -25,15 +25,16 @@
         <AssociationConnector Association="Model.FK_Products_ProductCategory" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Products_ProductSize" ManuallyRouted="false" />
         <AssociationConnector Association="Model.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.Cart" Width="1.5" PointX="9" PointY="16" />
         <EntityTypeShape EntityType="Model.OrderCanceled" Width="1.5" PointX="8.25" PointY="10.625" />
         <AssociationConnector Association="Model.FK_OrderCanceled_AspNetUsers" />
-        <AssociationConnector Association="Model.FK_Cart_Product" />
         <AssociationConnector Association="Model.FK_OrderCanceled_Products" />
         <EntityTypeShape EntityType="Model.WishList" Width="1.5" PointX="11.25" PointY="11.125" />
         <AssociationConnector Association="Model.FK_WishList_User" />
         <AssociationConnector Association="Model.FK_WishList_Products" />
         <AssociationConnector Association="Model.FK_WishList_WishList1" />
+        <EntityTypeShape EntityType="Model.Cart" Width="1.5" PointX="11.25" PointY="14.25" />
+        <AssociationConnector Association="Model.FK_Cart_AspNetUsers" />
+        <AssociationConnector Association="Model.FK_Cart_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
